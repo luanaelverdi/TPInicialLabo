@@ -1,6 +1,9 @@
 # Laboratorio de Construcción de Software
 ## Trabajo Práctico Inicial
 
+### WBS
+![WBS](https://github.com/luanaelverdi/TPInicialLabo/blob/main/assets/diagrama_wbs.png)
+
 ### Diagrama de Arquitectura
 ![Architecture Diagram](https://github.com/luanaelverdi/TPInicialLabo/blob/main/assets/diagrama_arquitectura.png)
 Componentes:
