@@ -1,10 +1,10 @@
 const mariadb = require('mariadb')
 
 const config = {
-    host: '',
-    user: '',
-    password: '',
-    database: '',
+    host: 'localhost',
+    user: 'root',
+    password: 'juegos2001',
+    database: 'ladrillito',
     connectionLimit: 5,
     acquireTimeout: 300
 }

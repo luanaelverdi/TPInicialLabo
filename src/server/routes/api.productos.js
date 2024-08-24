@@ -1,3 +1,5 @@
+//DBConnector = require('./dbconnector.js');
+
 module.exports = (server) => {
     server.app.get('/api/productos', (_, res) => {
         res.json({
@@ -5,5 +7,8 @@ module.exports = (server) => {
             name: "Producto 1",
             desc: "Soy un producto."
         });
+
+ //   DBConnector.query("INSERT INTO Productos (codigo,nombre,descripcion,cant_stock,id_categoria) VALUES ('codigoPrueba','prueba','blabla',10,0)");
+
     });
 }
