@@ -29,4 +29,4 @@ class DBConnector {
     }
 }
 
-//module exports = new DBConnector();
+module.exports = new DBConnector();
