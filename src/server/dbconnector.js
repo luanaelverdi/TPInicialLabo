@@ -10,7 +10,7 @@ const config = {
 }
 
 class DBConnector {
-    dbconnector = mariadb.createPool(config);
+    dbconnector = mariadb.createPool(config)
 
     async query(param) {
         var conn = await this.dbconnector.getConnection();

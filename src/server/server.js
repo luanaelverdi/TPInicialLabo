@@ -27,7 +27,7 @@ export default class {
                 res.sendFile(path.join(__dirname + '/../public/index.html'));
             });
         } catch (error) {
-            console.error(error);
+            console.error(error)
         }
     }
 }
