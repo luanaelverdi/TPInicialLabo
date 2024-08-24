@@ -1,4 +1,7 @@
-ARQUITECTURA
+# Laboratorio de Construcción de Software
+## Trabajo Práctico Inicial
+
+### Diagrama de Arquitectura
 ![Architecture Diagram](https://github.com/luanaelverdi/TPInicialLabo/blob/main/assets/diagrama_arquitectura.png)
 Componentes:
  - UI Manager: Interfaz donde el usuario interactúa con el sistema.
