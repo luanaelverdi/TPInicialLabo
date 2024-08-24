@@ -1,15 +1,15 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-
-export default class {
+const fs = require("fs");
+module.exports = class Server{
     constructor () {
         this.app = express();
-        this.app.set("port", process.env.PORT || 4000);
+        this.app.set("port", 4000);
         this.app.use('/public', express.static(path.join(__dirname + '/../public/')));
         this.app.use(express.json());
         this.routes();
-        this.app.listen(app.get("port"), () => {
+        this.app.listen(4000, () => {
             console.log("✅ | Server listening...");
         });
     }

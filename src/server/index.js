@@ -1,3 +1,3 @@
 require('dotenv').config();
-import Server from './server';
+const Server = require("./server.js");
 new Server()
