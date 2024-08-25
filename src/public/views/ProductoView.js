@@ -14,7 +14,7 @@ export default class extends AbstractView {
     }
 
     async getProduct () {
-        const request = await fetch('/api/productos/'+this.params.id_producto);
+        const request = await fetch('/api/producto/'+this.params.id_producto);
         const response = await request.json();
         return response;
     }

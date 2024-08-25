@@ -5,7 +5,7 @@ import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 export default class extends AbstractView {
     constructor (params) {
         super(params);
-        this.setTitle('Restar Stock');
+        this.setTitle('Sumar Stock');
     }
 
     async init () {
@@ -25,19 +25,17 @@ export default class extends AbstractView {
         contenedor.innerHTML = JSON.stringify(producto);
         const input = document.createElement('input');
         input.type = 'number';
+        input.placeholder = 'Cantidad';
 
         const button = document.createElement('button');
-        button.textContent = 'Restar';
+        button.textContent = 'Enviar Orden de Compra';
 
         button.addEventListener('click', async () => {
             const value = input.value;
-            const request = await fetch(`/api/producto/${producto.id_producto}/restar/${value}`, { method: "DELETE" });
+            const request = await fetch(`/api/compra/add/${this.params.id_producto}/${value}`, { method: 'PUT' });
             const response = await request.json();
-            if (!response.ok && response.error.code === "limite") {
-                alert(response.error.message);
-                return navigateTo(`/orden-compra/${producto.id_producto}`);
-            }
-            return alert('Cantidad restada');
+            if (!response.ok) return alert(response.error.message);
+            alert('Orden realizada con exito.');
         });
 
         contenedor.appendChild(input);
@@ -48,7 +46,7 @@ export default class extends AbstractView {
 const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
-        <h1>RESTAR STOCK</h1>
+        <h1>REALIZAR ORDEN DE COMPRA</h1>
         <div id="contenedor-producto"></div>
     </div>
 `;

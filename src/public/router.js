@@ -1,5 +1,6 @@
 import ErrorView from "./views/ErrorView.js";
 import InicioView from "./views/InicioView.js";
+import ProductoCompraView from "./views/ProductoCompraView.js";
 import ProductoRestarView from "./views/ProductoRestarView.js";
 import ProductoView from "./views/ProductoView.js";
 import ProductosView from "./views/ProductosView.js";
@@ -28,9 +29,10 @@ const router = async () => {
         { path: "/error", view: ErrorView },
         { path: "/", view: InicioView },
         { path: "/productos", view: ProductosView },
-        { path: "/productos/:id_producto", view: ProductoView },
+        { path: "/producto/:id_producto", view: ProductoView },
         { path: "/qr/user/:id_usuario/producto/:id_producto", view: ScannedQRView },
-        { path: "/restar-producto/:id_producto", view: ProductoRestarView }
+        { path: "/restar-producto/:id_producto", view: ProductoRestarView },
+        { path: "/orden-compra/:id_producto", view: ProductoCompraView },
     ];
 
     const potentialMatches = routes.map(route => {

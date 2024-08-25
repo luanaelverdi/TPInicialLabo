@@ -42,7 +42,7 @@ export default class extends AbstractView {
 
         productoDataContainer.innerHTML = `
             <h5 class="card-title">${producto.nombre_producto}</h5>
-            <a href="/productos/${producto.id_producto}" class="btn btn-primary" data-link>MAS INFO</a>
+            <a href="/producto/${producto.id_producto}" class="btn btn-primary" data-link>MAS INFO</a>
         `;
 
         this.generarQR(productoQRContainer, `/qr/user/${window.app.user.credenciales.id}/producto/${producto.id_producto}`);

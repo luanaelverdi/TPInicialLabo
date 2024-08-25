@@ -1,7 +1,7 @@
 const DBConnector = require("../dbconnector.js");
 
 module.exports = (server) => {
-    server.app.get('/api/productos/:id', async (req, res) => {
+    server.app.get('/api/producto/:id', async (req, res) => {
         const consulta = await DBConnector.query(`
             SELECT * FROM 
                 Productos
