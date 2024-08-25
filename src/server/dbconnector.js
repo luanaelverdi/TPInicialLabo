@@ -14,9 +14,9 @@ class DBConnector {
 
     async query(param) {
         var conn = await this.dbconnector.getConnection();
-        var ret = null;
-        conn.query(param)
-        .then(data => {
+       // var ret = null;
+        const ret = await conn.query(param) 
+ /*       .then(data => {
             ret = data;
             console.log(data);
             conn.end()
@@ -24,7 +24,8 @@ class DBConnector {
         .catch(err => {
             console.log(err)
             conn.end()
-        })
+        })*/
+        conn.end()
         return ret;
     }
 }
