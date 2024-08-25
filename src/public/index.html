@@ -12,28 +12,9 @@
 </head>
 
 <body>
+    <div class="app" id="app"></div>
 
-    <div class="menu">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#lista-productos">PRODUCTOS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">DEPOSITOS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#alta-producto">INGRESAR PRODUCTO</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#baja-producto">ELIMINAR PRODUCTO</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#modificar-producto">MODIFICAR PRODUCTO</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="buscador">
+    <!-- <div class="buscador">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <form class="d-flex" role="search">
@@ -48,7 +29,7 @@
         <div class="row gx-3 gy-3" id="contenedor_productos"> 
 
         </div>    
-    </div>  
+    </div>   -->
 
    <!--
     <div class="container text-center" id="lista-productos">
@@ -145,16 +126,14 @@
     </div>
     --> 
 
-    <div class="alta-producto" id="alta-producto">
+    <!-- <div class="alta-producto" id="alta-producto">
         <label for="">Codigo de producto: </label> <input type="text">
         <button class="btn btn-primary" onclick="generarQR()" >Generar QR</button>
         <div class="contenedor-qr"></div>
     </div>
-    <script src="../public/js/qr-test.js"></script>
+    <script src="../public/js/qr-test.js"></script> -->
 
-    <script type = "module" src = "/public/js/index.js">
-    
-    </script>
+    <script type = "module" src = "/public/router.js"></script>
 </body>
 
 </html>

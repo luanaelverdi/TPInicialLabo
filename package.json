@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mariadb": "^3.3.1"
+    "mariadb": "^3.3.1",
+    "tpiniciallabo": "file:"
   }
 }

@@ -1,10 +1,12 @@
 const path = require('path');
 const express = require('express');
-const app = express();
 const fs = require("fs");
-module.exports = class Server{
+
+module.exports = class Server {
     constructor () {
         this.app = express();
+        this.users = [];
+
         this.app.set("port", 4000);
         this.app.use('/public', express.static(path.join(__dirname + '/../public/')));
         this.app.use(express.json());
@@ -23,7 +25,7 @@ module.exports = class Server{
                 console.log('✅ | Loaded:', file);
             }
 
-            this.app.get('/', (_, res) => {
+            this.app.use('/*', (req, res) => {
                 res.sendFile(path.join(__dirname + '/../public/index.html'));
             });
         } catch (error) {

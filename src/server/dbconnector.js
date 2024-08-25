@@ -1,4 +1,4 @@
-const mariadb = require('mariadb')
+const mariadb = require('mariadb');
 
 const config = {
     host: 'localhost',
@@ -10,23 +10,19 @@ const config = {
 }
 
 class DBConnector {
-    dbconnector = mariadb.createPool(config)
+    constructor () {
+        this.dbconnector = mariadb.createPool(config);
+    }
 
     async query(param) {
-        var conn = await this.dbconnector.getConnection();
-       // var ret = null;
-        const ret = await conn.query(param) 
- /*       .then(data => {
-            ret = data;
-            console.log(data);
+        try {
+            const conn = await this.dbconnector.getConnection();
+            const ret = await conn.query(param) 
             conn.end()
-        })
-        .catch(err => {
-            console.log(err)
-            conn.end()
-        })*/
-        conn.end()
-        return ret;
+            return ret;
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
 
