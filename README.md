@@ -8,11 +8,23 @@
 ### Información Importante
  - NodeJS v20.17.0 o superior ('npm i' para instalar las dependencias y 'npm run start' para iniciar el servidor)
  - MariaDB v10.11.9
- - Modificar la propiedad host del archivo /src/server/config.js con la IP o dominio del host + puerto
+ - Crear un archivo .env en la ruta base del proyecto con la variable de entorno SERVER_HOST='tu_ip_ipv4':4000 (sin las comillas)
 
 ### WBS
 
 ![WBS](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/diagrama_wbs.png)
+
+### Diagrama Conceptual
+
+![Conceptual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/diagrama_conceptual.png)
+
+### Diagrama Entidad-Relacion
+
+![DER](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/diagrama_der.png)
+
+### Modelo Relacional
+
+![Modelo Relacional](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/modelo_relacional.png)
 
 ### Diagrama de Arquitectura
 
