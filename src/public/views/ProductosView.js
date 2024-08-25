@@ -69,7 +69,7 @@ export default class extends AbstractView {
             const response = await request.json();
             const id = response.credenciales.qr.id_producto;
             if (id) {
-                navigateTo('/productos/'+id);
+                navigateTo('/restar-producto/'+id);
                 return clearInterval(interval);
             }
         }, 3000);

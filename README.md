@@ -5,7 +5,6 @@
 - Morienega Melina: melimorienega@gmail.com
 - Deget Mateo: degetmateo@gmail.com
 
-
 ### Información Importante
  - NodeJS v20.17.0 o superior ('npm i' para instalar las dependencias y 'npm run start' para iniciar el servidor)
  - MariaDB v10.11.9

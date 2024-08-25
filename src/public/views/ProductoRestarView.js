@@ -4,13 +4,13 @@ import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 export default class extends AbstractView {
     constructor (params) {
         super(params);
-        this.setTitle('Producto');
-    } 
+        this.setTitle('Restar Stock');
+    }
 
     async init () {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
-        this.pintarProducto(JSON.stringify(await this.getProduct()));
+        this.pintarProducto(await this.getProduct())
     }
 
     async getProduct () {
@@ -21,14 +21,14 @@ export default class extends AbstractView {
 
     pintarProducto (producto) {
         const contenedor = document.getElementById('contenedor-producto');
-        contenedor.innerHTML = producto;
+        contenedor.innerHTML = JSON.stringify(producto);
     }
 }
 
 const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
-        <h1>Producto</h1>
+        <h1>RESTAR STOCK</h1>
         <div id="contenedor-producto"></div>
     </div>
 `;
