@@ -11,7 +11,7 @@ module.exports = class Server {
         this.app.use('/public', express.static(path.join(__dirname + '/../public/')));
         this.app.use(express.json());
         this.routes();
-        this.app.listen(4000, () => {
+        this.app.listen(4000, "0.0.0.0", () => {
             console.log("✅ | Server listening...");
         });
     }
