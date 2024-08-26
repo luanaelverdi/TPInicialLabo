@@ -18,7 +18,6 @@ export default class extends AbstractView {
 
 const VIEW_CONTENT = `
     <div class="container-view">
-        <h1>LOGIN</h1>
         ${TEMPLATE_NAVIGATION}
         <div id="contenedor-login"></div>
 
