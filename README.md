@@ -37,5 +37,5 @@
 
  #### Calendario:
  ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura1%20calendario.PNG)
- (https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura2%20calendario.PNG)
- (https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura3%20calendario.PNG)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura2%20calendario.PNG)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura3%20calendario.PNG)
