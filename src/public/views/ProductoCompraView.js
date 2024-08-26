@@ -36,6 +36,7 @@ export default class extends AbstractView {
             const response = await request.json();
             if (!response.ok) return alert(response.error.message);
             alert('Orden realizada con exito.');
+            window.location.reload();
         });
 
         contenedor.appendChild(input);

@@ -37,7 +37,8 @@ export default class extends AbstractView {
                 alert(response.error.message);
                 return navigateTo(`/orden-compra/${producto.id_producto}`);
             }
-            return alert('Cantidad restada');
+            alert('Cantidad restada');
+            window.location.reload();
         });
 
         contenedor.appendChild(input);

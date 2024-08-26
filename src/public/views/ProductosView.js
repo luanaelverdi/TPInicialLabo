@@ -2,6 +2,8 @@ import { navigateTo } from "../router.js";
 import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
+export let interval;
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -78,7 +80,7 @@ export default class extends AbstractView {
     }
 
     polling() {
-        const interval = setInterval(async () => {
+        interval = setInterval(async () => {
             const request = await fetch('/api/poll/' + window.app.user.credenciales.id);
             const response = await request.json();
             const id = response.credenciales.qr.id_producto;

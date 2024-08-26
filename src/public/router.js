@@ -3,7 +3,7 @@ import InicioView from "./views/InicioView.js";
 import ProductoCompraView from "./views/ProductoCompraView.js";
 import ProductoRestarView from "./views/ProductoRestarView.js";
 import ProductoView from "./views/ProductoView.js";
-import ProductosView from "./views/ProductosView.js";
+import ProductosView, {interval} from "./views/ProductosView.js";
 import ScannedQRView from "./views/ScannedQRView.js";
 
 import LoginView from "./views/LoginView.js";
@@ -24,6 +24,7 @@ const getParams = (match) => {
 };
 
 export const navigateTo = (url) => {
+    clearInterval(interval);
     window.history.pushState(null, null, url);
     router();
 };
