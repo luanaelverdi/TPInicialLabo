@@ -54,9 +54,9 @@ export default class extends AbstractView {
 
         button.addEventListener('click', async () => {
             const value = inputStock.value;
-            console.log(value)
             const request = await fetch(`/api/producto/${producto.id_producto}/restar/${value}`, { method: "DELETE" });
             const response = await request.json();
+
             if (!response.ok && response.error.code === "limite") {
                 alert(response.error.message);
                 return navigateTo(`/orden-compra/${producto.id_producto}`);

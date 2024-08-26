@@ -12,7 +12,7 @@ module.exports = (server) => {
                 WHERE id_producto = ${id_producto};
             `);
 
-            if (consultaStock[0].stock <= consultaStock[0].stock_minimo) {
+            if ((consultaStock[0].stock - cantidad) <= consultaStock[0].stock_minimo) {
                 // hacer lo de la orden
                 return res.json({ ok: false, error: { code: "limite", message: "Se llego al stock minimo." } });
             }
