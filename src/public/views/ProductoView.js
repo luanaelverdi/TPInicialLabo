@@ -29,6 +29,7 @@ const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
         <h1>Producto</h1>
-        <div id="contenedor-producto"></div>
+        <div id="contenedor-producto">
+        </div>
     </div>
 `;

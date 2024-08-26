@@ -6,6 +6,10 @@ import ProductoView from "./views/ProductoView.js";
 import ProductosView from "./views/ProductosView.js";
 import ScannedQRView from "./views/ScannedQRView.js";
 
+import LoginView from "./views/LoginView.js";
+
+
+
 const pathToRegex = (path) => {
     return new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 };
@@ -33,6 +37,8 @@ const router = async () => {
         { path: "/qr/user/:id_usuario/producto/:id_producto", view: ScannedQRView },
         { path: "/restar-producto/:id_producto", view: ProductoRestarView },
         { path: "/orden-compra/:id_producto", view: ProductoCompraView },
+        { path: "/login", view: LoginView },
+
     ];
 
     const potentialMatches = routes.map(route => {
