@@ -34,3 +34,8 @@
  - UI Manager: Interfaz donde el usuario interactúa con el sistema.
  - Administrador de Artículos: Módulo encargado de la ALTA, BAJA, MODIFICACIÓN y LECTURA de los artículos.
  - Visualizador de Códigos QR: Módulo encargado de la visualización de los códigos QR.
+
+ #### Calendario:
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura1%20calendario.PNG)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura2%20calendario.PNG)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura3%20calendario.PNG)
