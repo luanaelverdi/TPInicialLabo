@@ -80,8 +80,8 @@ const VIEW_CONTENT = `
     <div class="container-view">
         <h1>PRODUCTOS</h1>
         ${TEMPLATE_NAVIGATION}
-        <div class="container text-center">
-            <div class="row gx-3 gy-3" id="container-productos">
+        <div class="container-fluid text-center">
+            <div class="row gx-3 gy-3 m-2" id="container-productos">
 
             </div>
         </div>
