@@ -1,8 +1,9 @@
 const mariadb = require('mariadb');
 
 const config = {
-    host: 'localhost',
-    user: 'root',
+    host: 'intellpract2.ddns.net',
+    port: 9001,
+    user: 'tplabo',
     password: 'juegos2001',
     database: 'ladrillito',
     connectionLimit: 5,
@@ -12,7 +13,7 @@ const config = {
 class DBConnector {
     constructor () {
         this.dbconnector = mariadb.createPool(config);
-        CreateDB(this.dbconnector);
+        //CreateDB(this.dbconnector);
     }
 
     async query(param) {
@@ -26,14 +27,14 @@ class DBConnector {
         }
     }
 }
-
+/*
 async function CreateDB (dbconnector) {
     try {
         const conn = await dbconnector.getConnection();
         
-        await conn.query(`
-            CREATE DATABASE IF NOT EXISTS ladrillito;  
-        `);
+ //       await conn.query(`
+  //          CREATE DATABASE IF NOT EXISTS ladrillito;  
+  //      `);
 
         await conn.query(`
             DROP TABLE IF EXISTS ordencompra; 
@@ -81,6 +82,6 @@ async function CreateDB (dbconnector) {
     } catch (error) {
         console.error(error);
     }     
-}
+}*/
 
 module.exports = new DBConnector();
