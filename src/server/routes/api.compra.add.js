@@ -14,7 +14,7 @@ module.exports = (server) => {
 
             await db.query(`
                 UPDATE
-                    productos
+                    producto
                 SET
                     stock = stock + ${cantidad}
                 WHERE

@@ -14,7 +14,7 @@ module.exports = (server) => {
 
             await db.query(`
                 DELETE FROM
-                    productos
+                    producto
                 WHERE
                     id_producto = ${id_producto};
             `);

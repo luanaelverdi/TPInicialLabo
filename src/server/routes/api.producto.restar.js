@@ -8,7 +8,7 @@ module.exports = (server) => {
         try {
             const consultaStock = await db.query(`
                 SELECT stock, stock_minimo
-                FROM productos
+                FROM producto
                 WHERE id_producto = ${id_producto};
             `);
 
@@ -19,7 +19,7 @@ module.exports = (server) => {
 
             await db.query(`
                 UPDATE
-                    productos
+                    producto
                 SET
                     stock = stock - ${cantidad}
                 WHERE
