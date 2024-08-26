@@ -13,7 +13,6 @@ export default class extends AbstractView {
         appContainer.innerHTML = VIEW_CONTENT;
         this.pintarProductos(await this.getProductos());
         this.polling();
-
     }
 
     async getProductos() {
@@ -44,9 +43,20 @@ export default class extends AbstractView {
         productoDataContainer.innerHTML = `
             <h5 class="card-title">${producto.nombre_producto}</h5>
             <a href="/producto/${producto.id_producto}" id= "btn_modificar" class="btn btn-primary" data-link>MODIFICAR</a>
-            <a href ="${producto.id_producto}" id= "btn_eliminar" class="btn btn-primary" >ELIMINAR</a>
         `;
-        
+
+        const botonEliminar = document.createElement('a');
+        botonEliminar.setAttribute('class', 'btn btn-primary');
+        botonEliminar.textContent = 'ELIMINAR';
+        botonEliminar.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const req = await fetch(`/api/producto/${producto.id_producto}/eliminar`, { method: 'DELETE' });
+            const res = await req.json();
+            if (!res.ok) return alert(res.error.message);
+            alert('Producto Eliminado.');
+            productoContainer.remove();
+        });
+        productoDataContainer.appendChild(botonEliminar);
 
         this.generarQR(productoQRContainer, `/qr/user/${window.app.user.credenciales.id}/producto/${producto.id_producto}`);
         productoContainer.appendChild(productoCard);
@@ -78,8 +88,6 @@ export default class extends AbstractView {
             }
         }, 3000);
     }
-
-
 }
 
 
