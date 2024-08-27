@@ -100,8 +100,7 @@ const VIEW_CONTENT = `
         ${TEMPLATE_NAVIGATION}
         <ul class="nav nav-tabs">
         <li class="nav-item m-2">
-        <button class="btn btn-outline-success" >Añadir Producto</button>
-        <button class="btn btn-outline-success" >Generar Orden de Compra</button>
+        <button class="btn btn-outline-success" href="/insertar-producto" data-link>Añadir Producto</button>
         </li>
             <li class="nav-item m-2">
             <input class="form-control me-2" type="search" placeholder="Ingrese nombre">

@@ -14,7 +14,7 @@ module.exports = (server) => {
         }
 
         res.json({
-            host: process.env.SERVER_HOST || `${req.protocol}://${serverIps[1]}:4000`
+            host: `${process.env.SERVER_HOST}:${process.env.SERVER_PORT}` || `${req.protocol}://${serverIps[1]}:${process.env.SERVER_PORT}`
         });
     });
 }

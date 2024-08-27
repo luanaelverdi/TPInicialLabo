@@ -8,6 +8,7 @@ import ScannedQRView from "./views/ScannedQRView.js";
 
 import LoginView from "./views/LoginView.js";
 import DepositosView from "./views/DepositosView.js";
+import ProductoInsertarView from "./views/ProductoInsertarView.js";
 
 
 
@@ -34,6 +35,7 @@ const router = async () => {
     const routes = [
         { path: "/error", view: ErrorView },
         { path: "/", view: InicioView },
+        { path: "/insertar-producto", view: ProductoInsertarView },
         { path: "/productos", view: ProductosView },
         { path: "/producto/:id_producto", view: ProductoView },
         { path: "/qr/user/:id_usuario/producto/:id_producto", view: ScannedQRView },
