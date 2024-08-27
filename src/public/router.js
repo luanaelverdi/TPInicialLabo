@@ -7,6 +7,7 @@ import ProductosView, {interval} from "./views/ProductosView.js";
 import ScannedQRView from "./views/ScannedQRView.js";
 
 import LoginView from "./views/LoginView.js";
+import DepositosView from "./views/DepositosView.js";
 
 
 
@@ -39,7 +40,7 @@ const router = async () => {
         { path: "/restar-producto/:id_producto", view: ProductoRestarView },
         { path: "/orden-compra/:id_producto", view: ProductoCompraView },
         { path: "/login", view: LoginView },
-
+        { path: "/depositos", view: DepositosView }
     ];
 
     const potentialMatches = routes.map(route => {
