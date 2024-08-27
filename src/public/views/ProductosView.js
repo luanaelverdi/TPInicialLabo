@@ -38,6 +38,8 @@ export default class extends AbstractView {
 
         const productoQRContainer = document.createElement('div');
         productoQRContainer.setAttribute('class', 'card-img-top');
+        productoQRContainer.style.marginLeft='30%'
+        productoQRContainer.style.marginTop='5%'
 
         const productoDataContainer = document.createElement('div');
         productoDataContainer.setAttribute('class', 'card-body');
@@ -108,7 +110,7 @@ const VIEW_CONTENT = `
             <button class="btn btn-outline-success" >Buscar</button>
         </li>
         </ul>
-        <div class="container-fluid text-center">
+        <div class="text-center">
             <div class="row gx-3 gy-3 m-2" id="container-productos">
 
             </div>
