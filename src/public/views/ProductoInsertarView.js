@@ -1,4 +1,3 @@
-import {navigateTo} from "../router.js";
 import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
@@ -55,7 +54,6 @@ export default class extends AbstractView {
         const response = await request.json();
         if (!response.ok) return alert(response.error.message);
         alert('Producto Insertado.');
-        navigateTo('/productos');
     }
 }
 
