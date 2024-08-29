@@ -24,8 +24,8 @@ const VIEW_CONTENT = `
                     <input type="text" class="form-control">
                 </div>
                     <div class="mb-3">
-                    <label for="contraseña" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="contraseña">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password">
                 </div>
                 <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
