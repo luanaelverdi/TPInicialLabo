@@ -10,7 +10,8 @@ export default class extends AbstractView {
     async init () {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
-        this.pintarProducto(JSON.stringify(await this.getProduct()));
+        //this.pintarProducto(JSON.stringify(await this.getProduct()));
+        this.pintarProducto(await this.getProduct())
     }
 
     async getProduct () {
@@ -21,7 +22,8 @@ export default class extends AbstractView {
 
     pintarProducto (producto) {
         const contenedor = document.getElementById('contenedor-producto');
-        contenedor.innerHTML = producto;
+        contenedor.innerHTML = JSON.stringify(producto);
+        contenedor.style.backgroundColor ='red';
     }
 }
 
