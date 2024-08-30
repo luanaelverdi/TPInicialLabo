@@ -1,4 +1,3 @@
-import { navigateTo } from "../router.js";
 import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
@@ -11,19 +10,18 @@ export default class extends AbstractView {
     async init () {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
-        this.pintarDepositos(await this.getDepositos())
+        this.pintarDeposito(await this.getDeposito())
     }
 
-    async getDepositos () {
-        const request = await fetch('/api/depositos', { method: 'GET' });
-        return await request.json();
+    async getDeposito () {
+        const request = await fetch('/api/deposito/'+this.params.id_deposito);
+        const response = await request.json();
+        return response;
     }
 
-    pintarDepositos (depositos) {
-        const container = document.getElementById('contenedor-depositos');
-        for (const deposito of depositos) {
-            container.appendChild(this.elementoDeposito(deposito));
-        }
+    pintarDeposito (deposito) {
+        const contenedor = document.getElementById('contenedor-producto');
+        contenedor.appendChild(this.elementoDeposito(deposito));
     }
 
     elementoDeposito(deposito){
@@ -39,7 +37,7 @@ export default class extends AbstractView {
 
         depositoDataContainer.innerHTML = `
             <h5 class="card-title">${deposito.nombre}</h5>
-            <p class="card-text">Productos: </p>
+            <p class="card-text">HOLA</p>
             `;
 
         depositoContainer.appendChild(depositoCard);
@@ -52,7 +50,7 @@ export default class extends AbstractView {
 const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
-        <h1 class = "text-center">Depositos</h1>
+        <h1>Depositos</h1>
         <div id="contenedor-depositos"></div>
     </div>
 `;
