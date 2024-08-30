@@ -7,8 +7,13 @@
 
 ### Información Importante
  - NodeJS v20.17.0 o superior ('npm i' para instalar las dependencias y 'npm run start' para iniciar el servidor)
- - MariaDB v10.11.9
  - Crear un archivo .env en la ruta base del proyecto con la variable de entorno SERVER_HOST='tu_ip_ipv4':4000 (sin las comillas)
+ - Tanto la computadora como el dispositivo el cual escanean deben pertenecer a la misma red.
+ - Si al intentar leer un codigoQR no se actualiza la pagina correspondiente, verifique si su antivirus confia en la red que los dispositivos estan conectados (adjuntamos imagen con antivirus AVAST) 
+
+### Imagen Antivirus
+
+![Ejemplo](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Antivirus.PNG)
 
 ### WBS
 
