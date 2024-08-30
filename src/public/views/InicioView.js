@@ -18,7 +18,7 @@ const VIEW_CONTENT = `
         ${TEMPLATE_NAVIGATION}
         
         <div class="card text-bg-dark">
-            <img src="https://blog.deacero.com/hs-fs/hubfs/autoconstruir-o-contratar-constructora-2.jpg?width=1999&name=autoconstruir-o-contratar-constructora-2.jpg" class="img-fluid" alt="fondo" style="width: 100%; height: 100vh; background-repeat: no-repeat; background-size: cover; " class="card-img" alt="...">
+           <img id="img-fondo-inicio" src="https://img.pikbest.com/wp/202344/light-gray-background-design-abstract-grey-color-dark-black-and-with-old-wall-texture-of-cement-illuminated-by-white-gradient_9898524.jpg!sw800" class="img-fluid" alt="fondo">
             <div class="card-img-overlay">
                 <h1 class="display-1 text-center" style="color:black;">BIENVENIDOS A LADRILLITO S.A.</h1>
             </div>
