@@ -119,9 +119,6 @@ const VIEW_CONTENT = `
             <li class="nav-item m-2">
             <input class="form-control me-2" type="search" placeholder="Ingrese nombre" id = "buscador">
          </li>
-        <li class="nav-item m-2">
-            <button class="btn btn-outline-success" id="botonBuscar" >Buscar</button>
-        </li>
         </ul>
         <div class="text-center">
             <div class="row gx-3 gy-3 m-2" id="container-productos">
