@@ -15,6 +15,20 @@ export default class extends AbstractView {
         appContainer.innerHTML = VIEW_CONTENT;
         this.pintarProductos(await this.getProductos());
         this.polling();
+
+        this.buscarProducto();
+    }
+    buscarProducto(){
+        document.addEventListener('keyup', e => {
+            if (e.target.matches('#buscador')) {
+                if (e.key === "Escape") {
+                    e.target.value = ""
+                }
+                document.querySelectorAll(".producto").forEach(producto => {
+                    producto.textContent.toLowerCase().includes(e.target.value.toLowerCase()) ? producto.classList.remove('filtro') : producto.classList.add('filtro')
+                })
+            }
+        })
     }
 
     async getProductos() {
@@ -34,7 +48,7 @@ export default class extends AbstractView {
         productoContainer.setAttribute('class', 'col-xs-12 col-sm-6 col-md-4 col-xl-3');
 
         const productoCard = document.createElement('div');
-        productoCard.setAttribute('class', 'card');
+        productoCard.setAttribute('class', 'card producto');
 
         const productoQRContainer = document.createElement('div');
         productoQRContainer.setAttribute('class', 'card-img-top');
@@ -103,10 +117,10 @@ const VIEW_CONTENT = `
         <button class="btn btn-outline-success" href="/insertar-producto" data-link>Añadir Producto</button>
         </li>
             <li class="nav-item m-2">
-            <input class="form-control me-2" type="search" placeholder="Ingrese nombre">
+            <input class="form-control me-2" type="search" placeholder="Ingrese nombre" id = "buscador">
          </li>
         <li class="nav-item m-2">
-            <button class="btn btn-outline-success" >Buscar</button>
+            <button class="btn btn-outline-success" id="botonBuscar" >Buscar</button>
         </li>
         </ul>
         <div class="text-center">
