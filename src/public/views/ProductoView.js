@@ -2,32 +2,61 @@ import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
 export default class extends AbstractView {
-    constructor (params) {
+    constructor(params) {
         super(params);
         this.setTitle('Producto');
-    } 
+    }
 
-    async init () {
+    async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
         //this.pintarProducto(JSON.stringify(await this.getProduct()));
         this.pintarProducto(await this.getProduct())
+        this.asignarDatos(await this.getProduct())
+        this.eventos()
     }
 
-    async getProduct () {
-        const request = await fetch('/api/producto/'+this.params.id_producto);
+    eventos() {
+        this.EventoEnviarFormulario();
+    }
+
+    EventoEnviarFormulario() {
+        const formulario = document.getElementById('formulario-modificar-producto');
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.EnviarDatos();
+        });
+    }
+
+    async getProduct() {
+        const request = await fetch('/api/producto/' + this.params.id_producto);
         const response = await request.json();
         return response;
     }
 
-    pintarProducto (producto) {
-        const contenedor = document.getElementById('contenedor-producto');
-        contenedor.appendChild(this.elementoProducto(producto));
+    pintarProducto(producto) {
+        const formulario = document.getElementById('formulario-modificar-producto');
+        formulario.appendChild(this.elementoProducto(producto));
+
+        const botonGuardar = document.createElement('button');
+        botonGuardar.setAttribute('class', 'btn btn-primary');
+        botonGuardar.setAttribute('id', 'boton-guardar-modificar');
+        botonGuardar.textContent = 'Guardar';
+        //  botonGuardar.style.alignContent = 'center';
+        botonGuardar.style.position = 'absolute';
+        botonGuardar.style.bottom = '100px';
+        botonGuardar.style.left = '58%';
+        botonGuardar.style.transform = 'translateX(-25%)';
+        botonGuardar.style.height = '10%';
+        botonGuardar.style.width = '10%';
+        botonGuardar.style.fontSize = '20px';
+        formulario.appendChild(botonGuardar);
+
     }
 
-    elementoProducto(producto){
+    elementoProducto(producto) {
         const productoContainer = document.createElement('div');
-        productoContainer.setAttribute('class', 'container');
+       // productoContainer.setAttribute('class', 'container mt-5');
         productoContainer.setAttribute('id', 'container-producto-datos');
 
         const productoCard = document.createElement('div');
@@ -37,15 +66,14 @@ export default class extends AbstractView {
         productoDataContainer.setAttribute('class', 'card-body');
 
         productoDataContainer.innerHTML = `
-            <h5 class="card-title">${producto.nombre_producto}</h5>
-            <p class="card-text">Codigo: <input type='number' placeholder= '${producto.codigo}' ></p>
-            <p class="card-text">ID: <input type='number' placeholder= ' ${producto.id_producto}' </p>
-            <p class="card-text">Descripcion: <input type='number' placeholder= '${producto.desc_producto} '</p>
-            <p class="card-text">Cantidad de stock actual: <input type='number' placeholder= ' ${producto.stock}' </p>
-            <p class="card-text">Cantidad de stock minimo: <input type='number' placeholder= '${producto.stock_minimo}'</p>
-            <p class="card-text">Categoria: <input type='number' placeholder= ' ${producto.id_categoria}' </p>
-            <button type="submit" class="btn btn-primary" id='boton-guardar-modificar'>Guardar</button>
-
+            <p class="card-text">Nombre: <input type='text' id = 'nombre' placeholder= '${producto.nombre_producto}' ></p>
+            <p class="card-text">Codigo: <input type='text' id = 'codigo' placeholder= '${producto.codigo}' ></p>
+            <p class="card-text">Descripcion: <input type='text' id = 'descripcion' placeholder= '${producto.desc_producto} '</p>
+            <p class="card-text">Cantidad de stock actual: '${producto.stock}' </p>
+            <p class="card-text">Cantidad de stock minimo: <input type='number' id = 'stockMinimo' placeholder= '${producto.stock_minimo}'</p>
+            <p class="card-text">Categoria: <input type='number' id = 'idCategoria' placeholder= ' ${producto.id_categoria}' </p>
+            <span class="card-text"><input type='number' id = 'idProducto' </span>
+           
             `;
 
         productoContainer.appendChild(productoCard);
@@ -53,13 +81,73 @@ export default class extends AbstractView {
 
         return productoContainer;
     }
+
+    asignarDatos(producto) {
+        const inputCodigo = document.getElementById('codigo');
+        inputCodigo.value = producto.codigo;
+
+        const inputNombre = document.getElementById('nombre');
+        inputNombre.value = producto.nombre_producto;
+
+        const inputDesc = document.getElementById('descripcion');
+        inputDesc.value = producto.desc_producto;
+
+        const inputStockMin = document.getElementById('stockMinimo');
+        inputStockMin.value = producto.stock_minimo;
+
+        const inputIdCat = document.getElementById('idCategoria');
+        inputIdCat.value = producto.id_categoria;
+
+        const inputIdProd = document.getElementById('idProducto');
+        inputIdProd.value = producto.id_producto;
+        inputIdProd.style.display = 'none';
+
+    }
+
+    //aca
+    async EnviarDatos() {
+        const inputCodigo = document.getElementById('codigo');
+        const inputNombre = document.getElementById('nombre');
+        const inputDesc = document.getElementById('descripcion');
+        const inputStockMin = document.getElementById('stockMinimo');
+        const inputIdCat = document.getElementById('idCategoria');
+        const inputIdProducto = document.getElementById('idProducto');
+
+        const cod = inputCodigo.value;
+        const nom = inputNombre.value;
+        const des = inputDesc.value;
+        const smin = inputStockMin.value;
+        const idcat = inputIdCat.value;
+        const idprod = inputIdProducto.value;
+
+        const request = await fetch('/api/producto/modificar', {
+            method: "POST",
+            headers: { "Content-Type": "Application/JSON" },
+            body: JSON.stringify({
+                producto: {
+                    id_producto: idprod,
+                    codigo: cod,
+                    nombre: nom,
+                    descripcion: des,
+                    stock_minimo: smin,
+                    id_categoria: idcat
+                }
+            })
+        });
+        const response = await request.json();
+        if (!response.ok) return alert(response.error.message);
+        alert('Producto Modificado.');
+    }
 }
 
 const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
-        <h1 class= "text-center">Datos del producto</h1>
-        <div id="contenedor-producto">
-        </div>
+        <h1 class= "text-center">Modificar Producto</h1>
+        
+            <form id="formulario-modificar-producto">
+               
+             </form> 
+       
     </div>
 `;

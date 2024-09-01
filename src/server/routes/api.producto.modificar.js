@@ -1,7 +1,7 @@
 const db = require('../dbconnector.js');
 
 module.exports = (server) => {
-    server.app.post('/api/producto/add', async (req, res) => {
+    server.app.post('/api/producto/modificar', async (req, res) => {
         const producto = req.body.producto;
 
         if (producto.codigo.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar un codigo." } });
@@ -9,22 +9,21 @@ module.exports = (server) => {
         if (producto.descripcion.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar una descripcion." } });
         if (producto.stock_minimo < 0) return res.json({ ok: false, error: { message: "Debes ingresar un stock minimo valido." } });
         if (producto.id_categoria < 0) return res.json({ ok: false, error: { message: "Debes ingresar una categoria valida." } });
-
+       
         try {
             const queryStatus = await db.query(`
-                INSERT INTO 
-                    producto (codigo, nombre_producto, desc_producto, stock_minimo, id_categoria) 
-                VALUES (
-                    "${producto.codigo}",
-                    "${producto.nombre}",
-                    "${producto.descripcion}",
-                    ${producto.stock_minimo},
-                    ${producto.id_categoria}
-                );
+                UPDATE
+                    producto
+                SET
+                    codigo          =  "${producto.codigo}",
+                    nombre_producto =  "${producto.nombre}",
+                    desc_producto   =  "${producto.descripcion}",
+                    stock_minimo    =  ${producto.stock_minimo},
+                    id_categoria    =  ${producto.id_categoria}
+                WHERE
+                    id_producto = ${producto.id_producto};
             `);
             
-            //añadir producto en tabla almacenamiento
-
             if (!queryStatus) return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });
         } catch (error) {
             console.error(error);

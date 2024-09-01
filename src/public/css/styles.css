@@ -1,8 +1,8 @@
 body{
     overflow-x: hidden;
  }
- #container-producto-datos{
-    width: 35%;
+ #container-producto-datos input{
+   margin-left: 15%; 
  }
  #container-deposito-datos{
    margin: 2%;
