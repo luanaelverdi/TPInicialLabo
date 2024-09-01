@@ -9,6 +9,7 @@ module.exports = (server) => {
         if (producto.descripcion.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar una descripcion." } });
         if (producto.stock_minimo < 0) return res.json({ ok: false, error: { message: "Debes ingresar un stock minimo valido." } });
         if (producto.id_categoria < 0) return res.json({ ok: false, error: { message: "Debes ingresar una categoria valida." } });
+        if (producto.depositos.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar un deposito." } });
 
         try {
             const queryStatus = await db.query(`
@@ -24,8 +25,31 @@ module.exports = (server) => {
             `);
             
             //añadir producto en tabla almacenamiento
-
+                
             if (!queryStatus) return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });
+            
+            const buscaProducto = await db.query(`
+                SELECT
+                    max(id_producto)
+                FROM
+                    producto
+            `);
+            
+            if (!buscaProducto) return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });
+            
+            for (const id of producto.depositos) {
+                const queryDepositos = await db.query(`
+                    INSERT INTO 
+                        almacenamiento (id_producto,id_deposito) 
+                    VALUES (
+                        ${buscaProducto[0]['max(id_producto)']},
+                        ${id}
+                    );
+                `);
+                
+                if (!queryDepositos) return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });
+            }       
+
         } catch (error) {
             console.error(error);
             return res.json({ ok: false, error: { message: error.message } });
