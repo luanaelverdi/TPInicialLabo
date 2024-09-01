@@ -1,50 +1,54 @@
-import {navigateTo} from "../router.js";
+import { navigateTo } from "../router.js";
 import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
 export default class extends AbstractView {
-    constructor (params) {
+    constructor(params) {
         super(params);
         this.setTitle('Restar Stock');
     }
 
-    async init () {
+    async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
         this.pintarProducto(await this.getProduct())
     }
 
-    async getProduct () {
-        const request = await fetch('/api/producto/'+this.params.id_producto);
+    async getProduct() {
+        const request = await fetch('/api/producto/' + this.params.id_producto);
         const response = await request.json();
+        this.producto = response;
         return response;
     }
 
-    pintarProducto (producto) {
+    async pintarProducto(producto) {
         const contenedor = document.getElementById('contenedor-producto');
-        //contenedor.innerHTML = JSON.stringify(producto);
+
+        //select de depositos
+        await this.agregarSelectDeposito(contenedor);
+
         const inputStock = document.createElement('input');
         inputStock.type = 'number';
         inputStock.setAttribute('class', 'form-control');
-        inputStock.style.width= '30%';
-        inputStock.style.marginBottom= '30px';
-        
+        inputStock.style.width = '30%';
+        inputStock.style.marginBottom = '30px';
+
         const pStockActual = document.createElement('label');
-        pStockActual.type ='text'; 
+        pStockActual.type = 'text';
         pStockActual.setAttribute('class', 'form-label');
         pStockActual.innerHTML = 'Stock actual: ';
         const pStock = document.createElement('label');
-        pStock.type ='text'; 
+        pStock.type = 'text';
         pStock.setAttribute('class', 'form-label');
-        pStock.innerHTML ='Stock a restar: '
+        pStock.innerHTML = 'Stock a restar: '
 
 
         const inputStockActual = document.createElement('input');
-        inputStockActual.type ='number'; 
+        inputStockActual.type = 'number';
         inputStockActual.setAttribute('class', 'form-control');
-        inputStockActual.style.width= '30%';
+        inputStockActual.style.width = '30%';
         inputStockActual.setAttribute('readonly', 'true');
-        inputStockActual.style.marginBottom= '30px';
+        inputStockActual.style.marginBottom = '30px';
 
         const button = document.createElement('button');
         button.textContent = 'Restar';
@@ -72,6 +76,48 @@ export default class extends AbstractView {
         contenedor.appendChild(button);
 
     }
+
+    async agregarSelectDeposito(contenedor) {
+        const request = await fetch(`/api/producto/${this.producto.id_producto}/depositos`, {
+            method: "GET",
+        });
+        const opcionesDep = await request.json();
+
+        const label_deposito = document.createElement('label');
+        label_deposito.setAttribute("class", "form-label")
+        label_deposito.textContent = "Depositos: ";
+        label_deposito.style.marginRight = "10px"
+        contenedor.appendChild(label_deposito);
+
+        const select = document.createElement('select');
+        select.id = "select_deposito"
+
+        var optionElement = document.createElement('option');
+
+        optionElement.value = 0;
+        optionElement.textContent = "Seleccione"; // Texto mostrado
+        select.appendChild(optionElement);
+
+        // Añadir las opciones al select
+        opcionesDep.forEach((opcion) => {
+            var optionElement = document.createElement('option');
+
+            optionElement.value = opcion.id_deposito;
+            optionElement.textContent = opcion.nombre; // Texto mostrado
+
+            select.appendChild(optionElement);
+        });
+
+        contenedor.appendChild(select)
+        contenedor.innerHTML += "<br>";
+
+        document.querySelector('#select_deposito').addEventListener('change', (e) => {
+            // Aquí puedes acceder al valor seleccionado
+            if (e.target.value = 0) return;
+        });
+
+    }
+
 }
 
 const VIEW_CONTENT = `
