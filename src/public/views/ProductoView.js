@@ -44,8 +44,8 @@ export default class extends AbstractView {
         botonGuardar.textContent = 'Guardar';
         //  botonGuardar.style.alignContent = 'center';
         botonGuardar.style.position = 'absolute';
-        botonGuardar.style.bottom = '100px';
-        botonGuardar.style.left = '58%';
+        botonGuardar.style.bottom = '85px';
+        botonGuardar.style.left = '70%';
         botonGuardar.style.transform = 'translateX(-25%)';
         botonGuardar.style.height = '10%';
         botonGuardar.style.width = '10%';
@@ -56,7 +56,7 @@ export default class extends AbstractView {
 
     elementoProducto(producto) {
         const productoContainer = document.createElement('div');
-       // productoContainer.setAttribute('class', 'container mt-5');
+        productoContainer.setAttribute('class', 'container mt-5');
         productoContainer.setAttribute('id', 'container-producto-datos');
 
         const productoCard = document.createElement('div');
@@ -66,12 +66,30 @@ export default class extends AbstractView {
         productoDataContainer.setAttribute('class', 'card-body');
 
         productoDataContainer.innerHTML = `
-            <p class="card-text">Nombre: <input type='text' id = 'nombre' placeholder= '${producto.nombre_producto}' ></p>
-            <p class="card-text">Codigo: <input type='text' id = 'codigo' placeholder= '${producto.codigo}' ></p>
-            <p class="card-text">Descripcion: <input type='text' id = 'descripcion' placeholder= '${producto.desc_producto} '</p>
-            <p class="card-text">Cantidad de stock actual: '${producto.stock}' </p>
-            <p class="card-text">Cantidad de stock minimo: <input type='number' id = 'stockMinimo' placeholder= '${producto.stock_minimo}'</p>
-            <p class="card-text">Categoria: <input type='number' id = 'idCategoria' placeholder= ' ${producto.id_categoria}' </p>
+             <div class="mb-3">
+                <p class="card-text">Nombre: <input type='text' id = 'nombre' placeholder= '${producto.nombre_producto}' ></p>
+             </div>
+
+            <div class="mb-3">
+                <p class="card-text">Codigo: <input type='text' id = 'codigo' placeholder= '${producto.codigo}' ></p>  
+            </div>
+
+            <div class="mb-3">
+               <p class="card-text">Descripcion: <input type='text' id = 'descripcion' placeholder= '${producto.desc_producto} '</p>
+            </div>
+
+            <div class="mb-3">
+                 <p class="card-text">Cantidad de stock actual: '${producto.stock}' </p>
+            </div>
+
+            <div class="mb-3">
+                 <p class="card-text">Cantidad de stock minimo: <input type='number' id = 'stockMinimo' placeholder= '${producto.stock_minimo}'</p>
+            </div>
+
+            <div class="mb-3">
+                <p class="card-text">Categoria: <input type='number' id = 'idCategoria' placeholder= ' ${producto.id_categoria}' </p>
+            </div>
+
             <span class="card-text"><input type='number' id = 'idProducto' </span>
            
             `;

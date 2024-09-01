@@ -2,7 +2,7 @@ body{
     overflow-x: hidden;
  }
  #container-producto-datos input{
-   margin-left: 15%; 
+  /* margin-left: 15%; */
  }
  #container-deposito-datos{
    margin: 2%;
