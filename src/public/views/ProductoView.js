@@ -80,10 +80,6 @@ export default class extends AbstractView {
             </div>
 
             <div class="mb-3">
-                 <p class="card-text">Cantidad de stock actual: '${producto.stock}' </p>
-            </div>
-
-            <div class="mb-3">
                  <p class="card-text">Cantidad de stock minimo: <input type='number' id = 'stockMinimo' placeholder= '${producto.stock_minimo}'</p>
             </div>
 
@@ -172,6 +168,7 @@ export default class extends AbstractView {
             // Crear una etiqueta para el checkbox
             var label = document.createElement('label');
             label.textContent = opcion.nombre;
+            label.style.marginLeft = "10px"
 
             this.checkboxes.push(checkbox);
             div.appendChild(checkbox);
@@ -191,6 +188,23 @@ export default class extends AbstractView {
             const check = this.checkboxes.find(check => check.value == dep.id_deposito)
             check.checked = true;
         }
+
+        this.pintarStocks(productoDataContainer, depositosProducto)
+    }
+
+    async pintarStocks(productoDataContainer, depositosProducto) {
+        const div_stock = document.createElement("div")
+
+        for (const dep of depositosProducto) {
+            const label_stock = document.createElement("label")
+            label_stock.setAttribute("class", "form-label")
+
+            label_stock.textContent = `Cantidad Stock en ${dep.nombre}: ${dep.stock}`
+
+            div_stock.appendChild(label_stock)
+            div_stock.innerHTML += "<br>";
+        }
+        productoDataContainer.appendChild(div_stock);
     }
 
     asignarDatos(producto) {
@@ -250,7 +264,13 @@ export default class extends AbstractView {
             })
         });
         const response = await request.json();
-        if (!response.ok) return alert(response.error.message);
+
+        if (!response.ok && response.error.id_error && response.error.id_error == "stockDeposito") {
+           alert(response.error.message);
+        } else {
+            if (!response.ok) return alert(response.error.message);
+        }
+       
         alert('Producto Modificado.');
 
         window.location.reload();

@@ -27,6 +27,19 @@ module.exports = (server) => {
             
             if (!queryStatus) return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });
         
+        for (const id of producto.depositos) {
+            const stockDeposito = await db.query(`
+                SELECT 
+                stock
+                FROM 
+                    almacenamiento
+                WHERE
+                    id_producto = ${producto.id_producto} and id_deposito = ${id};
+            `);
+           
+           if (stockDeposito[0] && stockDeposito[0].stock > 0) return res.json({ ok: false, error: { message: "El producto en deposito seleccionados tiene stock. No se puede modificar Depositos.", id_error: "stockDeposito"}});
+        } 
+
             const eliminarProductoAlmacen = await db.query(`
                 DELETE
                 FROM
