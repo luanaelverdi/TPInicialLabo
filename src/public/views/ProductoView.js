@@ -34,6 +34,18 @@ export default class extends AbstractView {
         return response;
     }
 
+    async getCategorias(id_categoria) {
+        const request = await fetch('/api/producto/' + id_categoria);
+        const response = await request.json();
+        return response;
+    }
+
+    async getDeposito(id_deposito) {
+        const request = await fetch('/api/producto/' + id_deposito);
+        const response = await request.json();
+        return response;
+    }
+
     pintarProducto(producto) {
         const formulario = document.getElementById('formulario-modificar-producto');
         formulario.appendChild(this.elementoProducto(producto));
@@ -94,8 +106,50 @@ export default class extends AbstractView {
            
             `;
 
+        //llamado a la api para que me traiga las categorias (id_categoria, nombre)        
+        var opcionesCat = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'];
+
+        const select = document.createElement('select');
+
+        // Añadir las opciones al select
+        opcionesCat.forEach(function(opcion) {
+            var optionElement = document.createElement('option');
+            optionElement.value = opcion.toLowerCase().replace(/\s+/g, ''); // Valor para la opción
+            optionElement.textContent = opcion; // Texto mostrado
+            select.appendChild(optionElement);
+        });
+
+        productoDataContainer.appendChild(select);
+
+        //llamado a la api para que me traiga los depositos (id_deposito, nombre)
+        var opciones = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'];
+        opciones.forEach(function (opcion) {
+            // Crear un contenedor para cada opción
+            var div = document.createElement('div');
+
+            // Crear el elemento checkbox
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'opciones'; // Todos los checkboxes con el mismo nombre para agruparlos
+            checkbox.value = opcion;  // Valor de cada opción
+
+            // Crear una etiqueta para el checkbox
+            var label = document.createElement('label');
+            label.textContent = opcion;
+
+            // Añadir el checkbox y la etiqueta al contenedor
+            div.appendChild(checkbox);
+            div.appendChild(label);
+
+            // Añadir el contenedor al formulario
+            productoDataContainer.appendChild(div);
+        });
+
+        // Agregar el select al formulario
+       // productoDataContainer.appendChild(selectMultiple);
         productoContainer.appendChild(productoCard);
         productoCard.appendChild(productoDataContainer);
+
 
         return productoContainer;
     }
