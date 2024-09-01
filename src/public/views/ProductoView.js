@@ -227,9 +227,12 @@ export default class extends AbstractView {
         const idcat = inputIdCat.value;
         const idprod = inputIdProducto.value;
 
-        //limpiar formulario
-        const formulario = document.getElementById("formulario-modificar-producto");
-        formulario.reset();
+        const checksMarcados = this.checkboxes.filter(check => check.checked)
+        if (checksMarcados.length <= 0) {
+            return alert("Debe seleccionar un Deposito.")
+        }
+        const idDeps = checksMarcados.map(check => check.value);
+
 
         const request = await fetch('/api/producto/modificar', {
             method: "POST",
@@ -241,13 +244,16 @@ export default class extends AbstractView {
                     nombre: nom,
                     descripcion: des,
                     stock_minimo: smin,
-                    id_categoria: idcat
+                    id_categoria: idcat,
+                    depositos: idDeps
                 }
             })
         });
         const response = await request.json();
         if (!response.ok) return alert(response.error.message);
         alert('Producto Modificado.');
+
+        window.location.reload();
     }
 }
 

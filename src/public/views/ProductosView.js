@@ -18,26 +18,30 @@ export default class extends AbstractView {
 
         this.buscarProducto();
     }
+
     buscarProducto(){
         document.addEventListener('keyup', e => {
             if (e.target.matches('#buscador')) {
                 if (e.key === "Escape") {
                     e.target.value = ""
                 }
-                document.querySelectorAll(".producto").forEach(producto => {
-                    producto.textContent.toLowerCase().includes(e.target.value.toLowerCase()) ? producto.classList.remove('filtro') : producto.classList.add('filtro')
-                })
+                const productosFiltrados = this.productos.filter(producto => 
+                    producto.nombre_producto.toLowerCase().includes(e.target.value.toLowerCase())
+                );
+                this.pintarProductos(productosFiltrados);
             }
         })
     }
 
     async getProductos() {
         const request = await fetch('/api/productos', { method: 'GET' });
-        return await request.json();
+        this.productos = await request.json();
+        return this.productos;
     }
 
     pintarProductos(productos) {
         const container = document.getElementById('container-productos');
+        container.innerHTML = ""
         for (const producto of productos) {
             container.appendChild(this.elementoProducto(producto));
         }
