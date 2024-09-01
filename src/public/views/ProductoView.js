@@ -31,18 +31,7 @@ export default class extends AbstractView {
     async getProduct() {
         const request = await fetch('/api/producto/' + this.params.id_producto);
         const response = await request.json();
-        return response;
-    }
-
-    async getCategorias(id_categoria) {
-        const request = await fetch('/api/producto/' + id_categoria);
-        const response = await request.json();
-        return response;
-    }
-
-    async getDeposito(id_deposito) {
-        const request = await fetch('/api/producto/' + id_deposito);
-        const response = await request.json();
+        this.producto = response;
         return response;
     }
 
@@ -98,32 +87,79 @@ export default class extends AbstractView {
                  <p class="card-text">Cantidad de stock minimo: <input type='number' id = 'stockMinimo' placeholder= '${producto.stock_minimo}'</p>
             </div>
 
-            <div class="mb-3">
-                <p class="card-text">Categoria: <input type='number' id = 'idCategoria' placeholder= ' ${producto.id_categoria}' </p>
-            </div>
-
-            <span class="card-text"><input type='number' id = 'idProducto' </span>
+            <span class="card-text"><input type='number' id = 'idProducto'></span>
            
             `;
 
-        //llamado a la api para que me traiga las categorias (id_categoria, nombre)        
-        var opcionesCat = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'];
+        this.pintarCategorias(productoDataContainer);
+        this.pintarDepositos(productoDataContainer);
+
+        // Agregar el select al formulario
+        // productoDataContainer.appendChild(selectMultiple);
+        productoContainer.appendChild(productoCard);
+        productoCard.appendChild(productoDataContainer);
+
+
+        return productoContainer;
+    }
+
+    async pintarCategorias(productoDataContainer) {
+        //llamado a la api para que me traiga las categorias (id_categoria, nombre)
+        const request = await fetch('/api/categorias', {
+            method: "GET",
+        });
+        const opcionesCat = await request.json();
+
+        const label_cat = document.createElement('label');
+        label_cat.setAttribute("class", "form-label")
+        label_cat.textContent = "Categoria: ";
 
         const select = document.createElement('select');
+        select.id = "select_categoria"
+
+        var optionElement = document.createElement('option');
+
+        optionElement.value = 0;
+        optionElement.textContent = "Seleccione"; // Texto mostrado
+        select.appendChild(optionElement);
 
         // Añadir las opciones al select
-        opcionesCat.forEach(function(opcion) {
+        opcionesCat.forEach(function (opcion) {
             var optionElement = document.createElement('option');
-            optionElement.value = opcion.toLowerCase().replace(/\s+/g, ''); // Valor para la opción
-            optionElement.textContent = opcion; // Texto mostrado
+
+            optionElement.value = opcion.id_categoria;
+            optionElement.textContent = opcion.nombre; // Texto mostrado
             select.appendChild(optionElement);
         });
 
+        productoDataContainer.appendChild(label_cat);
         productoDataContainer.appendChild(select);
 
-        //llamado a la api para que me traiga los depositos (id_deposito, nombre)
-        var opciones = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'];
-        opciones.forEach(function (opcion) {
+        //seleccionar el que corresponde de producto
+        select.value = this.producto.id_categoria;
+
+    }
+
+    async pintarDepositos(productoDataContainer) {
+        const request = await fetch('/api/depositos', {
+            method: "GET",
+        });
+        const depositos = await request.json();
+
+        this.createCkeckBoxes(depositos, productoDataContainer);
+    }
+
+    async createCkeckBoxes(opciones, productoDataContainer) {
+        this.checkboxes = [];
+
+        const div_dep = document.createElement('div');
+        const label_dep = document.createElement('label');
+        label_dep.setAttribute("class", "form-label")
+        label_dep.textContent = "Depositos: ";
+        div_dep.appendChild(label_dep)
+        productoDataContainer.appendChild(div_dep);
+
+        opciones.forEach((opcion) => {
             // Crear un contenedor para cada opción
             var div = document.createElement('div');
 
@@ -131,13 +167,13 @@ export default class extends AbstractView {
             var checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.name = 'opciones'; // Todos los checkboxes con el mismo nombre para agruparlos
-            checkbox.value = opcion;  // Valor de cada opción
+            checkbox.value = opcion.id_deposito;  // Valor de cada opción
 
             // Crear una etiqueta para el checkbox
             var label = document.createElement('label');
-            label.textContent = opcion;
+            label.textContent = opcion.nombre;
 
-            // Añadir el checkbox y la etiqueta al contenedor
+            this.checkboxes.push(checkbox);
             div.appendChild(checkbox);
             div.appendChild(label);
 
@@ -145,13 +181,16 @@ export default class extends AbstractView {
             productoDataContainer.appendChild(div);
         });
 
-        // Agregar el select al formulario
-       // productoDataContainer.appendChild(selectMultiple);
-        productoContainer.appendChild(productoCard);
-        productoCard.appendChild(productoDataContainer);
+        //tildar los que estan en almacenamiento
+        const request2 = await fetch(`/api/producto/${this.producto.id_producto}/depositos`, {
+            method: "GET",
+        });
+        const depositosProducto = await request2.json();
 
-
-        return productoContainer;
+        for (const dep of depositosProducto) {
+            const check = this.checkboxes.find(check => check.value == dep.id_deposito)
+            check.checked = true;
+        }
     }
 
     asignarDatos(producto) {
@@ -167,22 +206,18 @@ export default class extends AbstractView {
         const inputStockMin = document.getElementById('stockMinimo');
         inputStockMin.value = producto.stock_minimo;
 
-        const inputIdCat = document.getElementById('idCategoria');
-        inputIdCat.value = producto.id_categoria;
-
         const inputIdProd = document.getElementById('idProducto');
         inputIdProd.value = producto.id_producto;
         inputIdProd.style.display = 'none';
 
     }
 
-    //aca
     async EnviarDatos() {
         const inputCodigo = document.getElementById('codigo');
         const inputNombre = document.getElementById('nombre');
         const inputDesc = document.getElementById('descripcion');
         const inputStockMin = document.getElementById('stockMinimo');
-        const inputIdCat = document.getElementById('idCategoria');
+        const inputIdCat = document.getElementById('select_categoria');
         const inputIdProducto = document.getElementById('idProducto');
 
         const cod = inputCodigo.value;
@@ -191,6 +226,10 @@ export default class extends AbstractView {
         const smin = inputStockMin.value;
         const idcat = inputIdCat.value;
         const idprod = inputIdProducto.value;
+
+        //limpiar formulario
+        const formulario = document.getElementById("formulario-modificar-producto");
+        formulario.reset();
 
         const request = await fetch('/api/producto/modificar', {
             method: "POST",

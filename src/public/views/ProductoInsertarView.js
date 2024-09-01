@@ -112,6 +112,10 @@ export default class extends AbstractView {
         const smin = inputStockMin.value;
         const idcat = inputIdCat.value;
 
+        //limpiar formulario
+        const formulario = document.getElementById("formulario-insertar-producto");
+        formulario.reset();
+
         const request = await fetch('/api/producto/add', {
             method: "POST",
             headers: { "Content-Type": "Application/JSON" },
