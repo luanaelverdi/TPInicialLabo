@@ -44,6 +44,7 @@ export default class extends AbstractView {
 
 
         const inputStockActual = document.createElement('input');
+        this.inputStockActual = inputStockActual;
         inputStockActual.type = 'number';
         inputStockActual.setAttribute('class', 'form-control');
         inputStockActual.style.width = '30%';
@@ -56,14 +57,17 @@ export default class extends AbstractView {
 
         inputStockActual.value = producto.stock;
 
+        const selectDeposito = document.getElementById("select_deposito");
+
         button.addEventListener('click', async () => {
             const value = inputStock.value;
-            const request = await fetch(`/api/producto/${producto.id_producto}/restar/${value}`, { method: "DELETE" });
+            if (selectDeposito.value <= 0) return alert("Debe seleccionar un deposito.");
+            const request = await fetch(`/api/producto/${producto.id_producto}/deposito/${selectDeposito.value}/restar/${value}`, { method: "DELETE" });
             const response = await request.json();
 
             if (!response.ok && response.error.code === "limite") {
                 alert(response.error.message);
-                return navigateTo(`/orden-compra/${producto.id_producto}`);
+                return navigateTo(`/orden-compra/${producto.id_producto}/${selectDeposito.value}`);
             }
             alert('Cantidad restada');
             window.location.reload();
@@ -113,7 +117,8 @@ export default class extends AbstractView {
 
         document.querySelector('#select_deposito').addEventListener('change', (e) => {
             // Aquí puedes acceder al valor seleccionado
-            if (e.target.value = 0) return;
+            if (e.target.value == 0) return;
+            this.inputStockActual.value = opcionesDep.find(dep => dep.id_deposito == e.target.value).stock;
         });
 
     }

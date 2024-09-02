@@ -11,6 +11,7 @@ export default class extends AbstractView {
     async init () {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
+        await this.getDeposito();
         this.pintarProducto(await this.getProduct())
     }
 
@@ -20,9 +21,23 @@ export default class extends AbstractView {
         return response;
     }
 
+    async getDeposito () {
+        const request = await fetch('/api/deposito/'+this.params.id_deposito);
+        const response = await request.json();
+        this.deposito = response;
+       // return response;
+    }
+
     pintarProducto (producto) {
         const contenedor = document.getElementById('contenedor-producto');
-        contenedor.innerHTML = JSON.stringify(producto);
+       
+        const label_nombreDeposito = document.createElement('label');
+        label_nombreDeposito.textContent = "Deposito: ";
+        label_nombreDeposito.innerHTML += `${this.deposito.nombre}`;
+       
+        contenedor.appendChild(label_nombreDeposito);
+        contenedor.innerHTML += "<br><br>";
+
         const input = document.createElement('input');
         input.type = 'number';
         input.placeholder = 'Cantidad';
@@ -32,7 +47,7 @@ export default class extends AbstractView {
 
         button.addEventListener('click', async () => {
             const value = input.value;
-            const request = await fetch(`/api/compra/add/${this.params.id_producto}/${value}`, { method: 'PUT' });
+            const request = await fetch(`/api/compra/add/${this.params.id_producto}/${this.params.id_deposito}/${value}`, { method: 'PUT' });
             const response = await request.json();
             if (!response.ok) return alert(response.error.message);
             alert('Orden realizada con exito.');

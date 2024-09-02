@@ -40,7 +40,7 @@ const router = async () => {
         { path: "/producto/:id_producto", view: ProductoView },
         { path: "/qr/user/:id_usuario/producto/:id_producto", view: ScannedQRView },
         { path: "/restar-producto/:id_producto", view: ProductoRestarView },
-        { path: "/orden-compra/:id_producto", view: ProductoCompraView },
+        { path: "/orden-compra/:id_producto/:id_deposito", view: ProductoCompraView },
         { path: "/login", view: LoginView },
         { path: "/depositos", view: DepositosView }
     ];
