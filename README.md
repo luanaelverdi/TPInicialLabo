@@ -38,6 +38,8 @@
 #### Componentes:
  - UI Manager: Interfaz donde el usuario interactúa con el sistema.
  - Administrador de Artículos: Módulo encargado de la ALTA, BAJA, MODIFICACIÓN y LECTURA de los artículos.
+ - Administrador de Categorias: Módulo encargado de la ALTA, BAJA, MODIFICACIÓN y LECTURA de las categorias.
+ - Administrador de Sesiones: Módulo encargado del alta de los usuarios e inicio de sesión.
  - Visualizador de Códigos QR: Módulo encargado de la visualización de los códigos QR.
 
  #### Calendario:
