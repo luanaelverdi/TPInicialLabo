@@ -32,6 +32,7 @@ export default class extends AbstractView {
         const contenedor = document.getElementById('contenedor-producto');
        
         const label_nombreDeposito = document.createElement('label');
+        label_nombreDeposito.setAttribute('class', "form-label");
         label_nombreDeposito.textContent = "Deposito: ";
         label_nombreDeposito.innerHTML += `${this.deposito.nombre}`;
        
@@ -39,10 +40,12 @@ export default class extends AbstractView {
         contenedor.innerHTML += "<br><br>";
 
         const input = document.createElement('input');
+        input.setAttribute('class', 'form-label')
         input.type = 'number';
         input.placeholder = 'Cantidad';
 
         const button = document.createElement('button');
+        button.setAttribute('class', 'btn btn-primary');
         button.textContent = 'Enviar Orden de Compra';
 
         button.addEventListener('click', async () => {
@@ -55,6 +58,8 @@ export default class extends AbstractView {
         });
 
         contenedor.appendChild(input);
+        contenedor.innerHTML += "<br><br>";
+
         contenedor.appendChild(button);
     }
 }
@@ -63,6 +68,6 @@ const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
         <h1>REALIZAR ORDEN DE COMPRA</h1>
-        <div id="contenedor-producto"></div>
+        <div id="contenedor-producto" style="padding-left:30px;"></div>
     </div>
 `;
