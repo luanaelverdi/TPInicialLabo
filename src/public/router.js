@@ -64,8 +64,32 @@ const router = async () => {
         };
     };
 
+    const loginData = localStorage.getItem('usuario');
+    if (!loginData) {
+        const route = routes.find(r => r.path.toLowerCase().includes('/login'));
+        match = {
+            route: route,
+            result: [route.path]
+        };
+    }
+    const usuario = JSON.parse(loginData);
+    if (!usuario || !usuario.nombre || !usuario.password || !usuario.id) {
+        const route = routes.find(r => r.path.toLowerCase().includes('/login'));
+        match = {
+            route: route,
+            result: [route.path]
+        };
+    }
+
     const view = new match.route.view(getParams(match));
     await view.init();
+    const botonCerrarSesion = document.getElementById('boton-cerrar-sesion');
+    botonCerrarSesion.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('usuario');
+        window.app.usuario = null;
+        router();
+    });
 };
 
 window.addEventListener("popstate", router);

@@ -13,8 +13,8 @@ export const TEMPLATE_NAVIGATION = `
             <li class="nav-item m-2">
                 <a class="nav-link active" href="/categorias" data-link>CATEGORIAS</a>
             </li>
-            <li class="nav-item m-2">
-                <a class="nav-link active" href="/login" data-link>INICIAR SESION</a>
+            <li class="nav-item m-2" id="nav-li-login">
+                <a class="nav-link active" id="boton-cerrar-sesion" href="/" style='background: rgb(237,75,75);'>CERRAR SESION</a>
             </li>
         </ul>
     </div>

@@ -11,7 +11,31 @@ export default class extends AbstractView {
     async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
-        this.pintarCategorias(await this.getCategorias())
+        this.pintarCategorias(await this.getCategorias());
+        this.agregarCategoria();
+    }
+
+    async agregarCategoria() {
+        const input_cat = document.getElementById("input_cat");
+        const btn_agregar = document.getElementById("btn_agregar");
+
+        btn_agregar.addEventListener('click',async (e) => {
+            const cat_nombre = input_cat.value;
+
+            const request = await fetch('/api/categoria/agregar', {
+                method: "POST",
+                headers: { "Content-Type": "Application/JSON" },
+                body: JSON.stringify({
+                    categoria: {
+                        nombre: cat_nombre
+                    }
+                })
+            });
+            const response = await request.json();
+            if (!response.ok) return alert(response.error.message);
+            alert("Categoria Agregada");
+            window.location.reload();
+        })
     }
 
     async getCategorias() {
@@ -65,7 +89,11 @@ export default class extends AbstractView {
 const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
-        <h1 class = "text-center">Categorias</h1>
+    <div style = "display: grid;grid-template-columns: auto;gap: 10px;grid-template-rows: auto auto;justify-items: start;margin-left: 35px;">
+        <h1> Categorias</h1>
+        <input type = "text" placeholder = "Agregar Categoria" id = "input_cat">
+        <button class = "btn btn-success" id = "btn_agregar" style = "margin-top: 10px;"> Agregar</button>
+    </div>
         <div id="contenedor-categorias"></div>
     </div>
 `;

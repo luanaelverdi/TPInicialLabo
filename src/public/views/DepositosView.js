@@ -14,19 +14,26 @@ export default class extends AbstractView {
         this.pintarDepositos(await this.getDepositos())
     }
 
-    async getDepositos () {
+    async getDepositos() {
         const request = await fetch('/api/depositos', { method: 'GET' });
         return await request.json();
     }
 
-    pintarDepositos (depositos) {
+    async pintarDepositos (depositos) {
         const container = document.getElementById('contenedor-depositos');
         for (const deposito of depositos) {
-            container.appendChild(this.elementoDeposito(deposito));
+            //buscar sus productos
+           const productos = await this.getDepositoProductos(deposito.id_deposito);
+           container.appendChild(this.elementoDeposito(deposito,productos));
         }
     }
 
-    elementoDeposito(deposito){
+    async getDepositoProductos (id_deposito) {
+        const request = await fetch(`/api/depositos/${id_deposito}/productos`, { method: 'GET' });
+        return await request.json();
+    }
+
+    elementoDeposito(deposito,productos){
         const depositoContainer = document.createElement('div');
         depositoContainer.setAttribute('class', 'container');
         depositoContainer.setAttribute('id', 'container-deposito-datos');
@@ -41,6 +48,12 @@ export default class extends AbstractView {
             <h5 class="card-title">${deposito.nombre}</h5>
             <p class="card-text">Productos: </p>
             `;
+
+        for (const producto of productos) {
+            depositoDataContainer.innerHTML += "<li>" + producto.nombre_producto;
+            depositoDataContainer.innerHTML += "----> Stock: " + producto.stock + "</li>";
+            depositoDataContainer.innerHTML += "<br>";
+        }
 
         depositoContainer.appendChild(depositoCard);
         depositoCard.appendChild(depositoDataContainer);
