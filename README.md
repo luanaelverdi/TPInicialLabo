@@ -32,7 +32,8 @@
 
 ### Diagrama de Arquitectura
 
-![Architecture Diagram](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/diagrama_arq.jpeg?raw=true)
+![Architecture Diagram](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/DiagramadeArquitectura.png)
+
 
 #### Componentes:
  - UI Manager: Interfaz donde el usuario interactúa con el sistema.
