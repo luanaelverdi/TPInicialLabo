@@ -11,6 +11,9 @@ export const TEMPLATE_NAVIGATION = `
                 <a class="nav-link active" href="/depositos" data-link>DEPOSITOS</a>
             </li>
             <li class="nav-item m-2">
+                <a class="nav-link active" href="/categorias" data-link>CATEGORIAS</a>
+            </li>
+            <li class="nav-item m-2">
                 <a class="nav-link active" href="/login" data-link>INICIAR SESION</a>
             </li>
         </ul>

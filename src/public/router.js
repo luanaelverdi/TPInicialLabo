@@ -9,7 +9,8 @@ import ScannedQRView from "./views/ScannedQRView.js";
 import LoginView from "./views/LoginView.js";
 import DepositosView from "./views/DepositosView.js";
 import ProductoInsertarView from "./views/ProductoInsertarView.js";
-
+import CategoriasView from "./views/CategoriasView.js";
+import CategoriaView from "./views/CategoriaView.js";
 
 
 const pathToRegex = (path) => {
@@ -42,7 +43,9 @@ const router = async () => {
         { path: "/restar-producto/:id_producto", view: ProductoRestarView },
         { path: "/orden-compra/:id_producto/:id_deposito", view: ProductoCompraView },
         { path: "/login", view: LoginView },
-        { path: "/depositos", view: DepositosView }
+        { path: "/depositos", view: DepositosView },
+        { path: "/categorias", view: CategoriasView },
+        { path: "/categoria/:id_categoria", view: CategoriaView }
     ];
 
     const potentialMatches = routes.map(route => {
