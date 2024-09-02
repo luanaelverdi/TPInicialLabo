@@ -1,9 +1,9 @@
 # Laboratorio de Construcción de Software
 ## Trabajo Práctico Inicial
 ### Integrantes:
+- Deget Mateo: degetmateo@gmail.com
 - Elverdi Luana: luanaelverdi@gmail.com
 - Morienega Melina: melimorienega@gmail.com
-- Deget Mateo: degetmateo@gmail.com
 
 ### Información Importante
  - NodeJS v20.17.0 o superior ('npm i' para instalar las dependencias y 'npm run start' para iniciar el servidor)
@@ -17,11 +17,10 @@
 
 ### WBS
 
-![WBS](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/diagrama_wbs.png)
-
+![WBS](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/diagrama_wbs.png)
 ### Diagrama Conceptual
 
-![Conceptual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/diagrama_conceptual.png)
+![Conceptual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/diagrama_conceptual.png)
 
 ### Diagrama Entidad-Relacion
 
@@ -29,7 +28,7 @@
 
 ### Modelo Relacional
 
-![Modelo Relacional](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/modelo_relacional.png)
+![Modelo Relacional](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/modelo_relacional.png)
 
 ### Diagrama de Arquitectura
 
@@ -41,6 +40,8 @@
  - Visualizador de Códigos QR: Módulo encargado de la visualización de los códigos QR.
 
  #### Calendario:
- ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura1%20calendario.PNG)
- ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura2%20calendario.PNG)
- ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Captura3%20calendario.PNG)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario1.jpeg)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario2.jpeg)
+ 
+ ### Grafico cards
+![Grafico cards](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/grafico%20cards.jpeg)
