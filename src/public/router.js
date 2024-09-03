@@ -64,21 +64,23 @@ const router = async () => {
         };
     };
 
-    const loginData = localStorage.getItem('usuario');
-    if (!loginData) {
-        const route = routes.find(r => r.path.toLowerCase().includes('/login'));
-        match = {
-            route: route,
-            result: [route.path]
-        };
-    }
-    const usuario = JSON.parse(loginData);
-    if (!usuario || !usuario.nombre || !usuario.password || !usuario.id) {
-        const route = routes.find(r => r.path.toLowerCase().includes('/login'));
-        match = {
-            route: route,
-            result: [route.path]
-        };
+    if (match.route.path != '/qr/user/:id_usuario/producto/:id_producto') {
+        const loginData = localStorage.getItem('usuario');
+        if (!loginData) {
+            const route = routes.find(r => r.path.toLowerCase().includes('/login'));
+            match = {
+                route: route,
+                result: [route.path]
+            };
+        }
+        const usuario = JSON.parse(loginData);
+        if (!usuario || !usuario.nombre || !usuario.password || !usuario.id) {
+            const route = routes.find(r => r.path.toLowerCase().includes('/login'));
+            match = {
+                route: route,
+                result: [route.path]
+            };
+        }
     }
 
     const view = new match.route.view(getParams(match));
