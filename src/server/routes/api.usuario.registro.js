@@ -14,7 +14,7 @@ module.exports = (server) => {
             const consultaInsertarUsuario = db.query(`
                 INSERT INTO
                     usuario (nombre_usuario, contraseña)
-                VALUES ('${nombre}', ${password});
+                VALUES ('${nombre}', '${password}');
             `);
             if (!consultaInsertarUsuario) throw new Error("Ha ocurrido un error.");
             return res.json({ ok: true });
