@@ -11,7 +11,7 @@ module.exports = (server) => {
                 WHERE
                     id_categoria = ${id_categoria};
             `);
-            
+
             if (queryStatus != undefined && queryStatus != null && queryStatus != '' && queryStatus.length != 0) return res.json({ ok: false, error: { message: "No se puede eliminar la categoria. Tiene productos asociados." } });
             if (!queryStatus) return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });
 

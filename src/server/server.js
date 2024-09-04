@@ -3,7 +3,7 @@ const express = require('express');
 const fs = require("fs");
 
 module.exports = class Server {
-    constructor () {
+    constructor() {
         this.app = express();
         this.users = [];
 
@@ -16,10 +16,10 @@ module.exports = class Server {
         });
     }
 
-    routes () {
+    routes() {
         try {
             const files = fs.readdirSync(path.join(__dirname + '/routes/'));
-            
+
             for (const file of files) {
                 require(path.join(__dirname + '/routes/' + file))(this);
                 console.log('✅ | Loaded:', file);

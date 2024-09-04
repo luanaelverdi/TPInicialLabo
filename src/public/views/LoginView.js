@@ -1,25 +1,25 @@
-import {navigateTo} from "../router.js";
+import { navigateTo } from "../router.js";
 import AbstractView from "./AbstractView.js";
-import {TEMPLATE_NAVIGATION} from "./templates/nav.js";
+import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
 export default class extends AbstractView {
-    constructor (params) {
+    constructor(params) {
         super(params);
         this.setTitle('Login');
     }
 
-    async init () {
+    async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
         this.eventos();
     }
 
-    eventos () {
+    eventos() {
         this.eventoLogin();
         this.eventoRegistro();
     }
 
-    eventoLogin () {
+    eventoLogin() {
         const formulario = document.getElementById('form-login');
         const inputNombreLogin = document.getElementById('input-nombre-login');
         const inputPasswordLogin = document.getElementById('input-password-login');
@@ -33,7 +33,7 @@ export default class extends AbstractView {
         });
     }
 
-    async enviarLogin (nombre, password) {
+    async enviarLogin(nombre, password) {
         const request = await fetch('/api/usuario/login', {
             method: "POST",
             headers: { "Content-Type": "Application/JSON" },
@@ -53,7 +53,7 @@ export default class extends AbstractView {
         navigateTo('/');
     }
 
-    eventoRegistro () {
+    eventoRegistro() {
         const formulario = document.getElementById('form-registro');
         const inputNombreRegistro = document.getElementById('input-nombre-registro');
         const inputPasswordRegistro = document.getElementById('input-password-registro');
@@ -67,7 +67,7 @@ export default class extends AbstractView {
         });
     }
 
-    async enviarRegistro (nombre, password) {
+    async enviarRegistro(nombre, password) {
         const request = await fetch('/api/usuario/registro', {
             method: "POST",
             headers: { "Content-Type": "Application/JSON" },
@@ -92,7 +92,7 @@ const VIEW_CONTENT = `
                     <label for="usuario" class="form-label" placeholder = "Ingrese su usuario">Usuario</label>
                     <input type="text" id="input-nombre-login" class="form-control">
                 </div>
-                    <div class="mb-3">
+                <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" id="input-password-login" class="form-control" id="password">
                 </div>
@@ -107,7 +107,7 @@ const VIEW_CONTENT = `
                     <label for="usuario" class="form-label" placeholder = "Ingrese su usuario">Usuario</label>
                     <input type="text" id="input-nombre-registro" class="form-control">
                 </div>
-                    <div class="mb-3">
+                <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" id="input-password-registro" class="form-control" id="password">
                 </div>
