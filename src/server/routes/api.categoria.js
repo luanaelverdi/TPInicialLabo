@@ -1,13 +1,21 @@
-const DBConnector = require("../dbconnector.js");
+const Postgres=require("../Postgres.js");
 
 module.exports = (server) => {
     server.app.get('/api/categoria/:id', async (req, res) => {
-        const consulta = await DBConnector.query(`
-            SELECT * FROM 
-                categoria
-            WHERE
-                id_categoria = ${req.params.id};
-        `);
-        res.json(consulta[0]);
+        try {
+            await Postgres.query().begin(async sql => {
+                await sql`SET TRANSACTION ISOLATION LEVEL READ COMMITTED;`;
+                const qCategorias = await sql`
+                    SELECT * FROM 
+                        categoria
+                    WHERE
+                        id_categoria = ${req.params.id};
+                `;
+                return res.json(qCategorias);
+            });
+        } catch (error) {  
+            console.error(error);
+            return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });
+        }
     });
 }

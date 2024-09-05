@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const fs = require("fs");
+const Postgres=require('./Postgres');
 
 module.exports = class Server {
     constructor () {
@@ -11,6 +12,7 @@ module.exports = class Server {
         this.app.use('/public', express.static(path.join(__dirname + '/../public/')));
         this.app.use(express.json());
         this.routes();
+        Postgres.init();
         this.app.listen(4000, "0.0.0.0", () => {
             console.log("✅ | Server listening...");
         });
