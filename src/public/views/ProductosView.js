@@ -15,17 +15,16 @@ export default class extends AbstractView {
         appContainer.innerHTML = VIEW_CONTENT;
         this.pintarProductos(await this.getProductos());
         this.polling();
-
         this.buscarProducto();
     }
 
-    buscarProducto(){
+    buscarProducto() {
         document.addEventListener('keyup', e => {
             if (e.target.matches('#buscador')) {
                 if (e.key === "Escape") {
                     e.target.value = ""
                 }
-                const productosFiltrados = this.productos.filter(producto => 
+                const productosFiltrados = this.productos.filter(producto =>
                     producto.nombre_producto.toLowerCase().includes(e.target.value.toLowerCase())
                 );
                 this.pintarProductos(productosFiltrados);
@@ -56,8 +55,8 @@ export default class extends AbstractView {
 
         const productoQRContainer = document.createElement('div');
         productoQRContainer.setAttribute('class', 'card-img-top');
-        productoQRContainer.style.marginLeft='30%'
-        productoQRContainer.style.marginTop='5%'
+        productoQRContainer.style.marginLeft = '30%'
+        productoQRContainer.style.marginTop = '5%'
 
         const productoDataContainer = document.createElement('div');
         productoDataContainer.setAttribute('class', 'card-body');
@@ -117,16 +116,15 @@ const VIEW_CONTENT = `
     <div class="container-view">
         ${TEMPLATE_NAVIGATION}
         <ul class="nav nav-tabs">
-        <li class="nav-item m-2">
-        <button class="btn btn-outline-success" href="/insertar-producto" data-link>Añadir Producto</button>
-        </li>
             <li class="nav-item m-2">
-            <input class="form-control me-2" type="search" placeholder="Ingrese nombre" id = "buscador">
-         </li>
+                <button class="btn btn-outline-success" href="/insertar-producto" data-link>Añadir Producto</button>
+            </li>
+            <li class="nav-item m-2">
+                <input class="form-control me-2" type="search" placeholder="Ingrese nombre" id = "buscador">
+            </li>
         </ul>
         <div class="text-center">
             <div class="row gx-3 gy-3 m-2" id="container-productos">
-
             </div>
         </div>
     </div>

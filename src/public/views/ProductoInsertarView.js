@@ -13,10 +13,7 @@ export default class extends AbstractView {
         appContainer.innerHTML = VIEW_CONTENT;
 
         this.getCategorias();
-
         this.getDepositos();
-        
-
         this.eventos();
     }
 
@@ -29,7 +26,7 @@ export default class extends AbstractView {
         const select = document.getElementById('id_select');
 
         var optionElement = document.createElement('option');
-        
+
         optionElement.value = 0;
         optionElement.textContent = "Seleccione"; // Texto mostrado
         select.appendChild(optionElement);
@@ -37,7 +34,7 @@ export default class extends AbstractView {
         // Añadir las opciones al select
         opcionesCat.forEach(function (opcion) {
             var optionElement = document.createElement('option');
-           
+
             optionElement.value = opcion.id_categoria;
             optionElement.textContent = opcion.nombre; // Texto mostrado
             select.appendChild(optionElement);
@@ -51,13 +48,13 @@ export default class extends AbstractView {
         const depositos = await request.json();
 
         this.createCkeckBoxes(depositos);
-    } 
+    }
 
     createCkeckBoxes(opciones) {
         var divPrinc = document.getElementById('depositos_checks');
         this.checkboxes = [];
 
-        opciones.forEach( (opcion) =>  {
+        opciones.forEach((opcion) => {
             // Crear un contenedor para cada opción
             var div = document.createElement('div');
 
@@ -170,7 +167,6 @@ const VIEW_CONTENT = `
 
                     <div class="mb-3" id = "depositos_checks">
                         <label for="idCategoria" class="form-label">Depositos</label>
-                        
                     </div>
 
                     <button type="submit" class="btn btn-primary">Crear Producto</button>

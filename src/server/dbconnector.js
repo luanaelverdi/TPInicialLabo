@@ -1,7 +1,7 @@
 const mariadb = require('mariadb');
 
 class DBConnector {
-    constructor () {
+    constructor() {
         this.dbconnector = mariadb.createPool({
             host: 'intellpract2.ddns.net',
             port: 9001,
@@ -13,7 +13,7 @@ class DBConnector {
         });
     }
 
-    async query (param) {
+    async query(param) {
         try {
             const conn = await this.dbconnector.getConnection();
             const ret = await conn.query(param);

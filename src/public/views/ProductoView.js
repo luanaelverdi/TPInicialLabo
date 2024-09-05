@@ -67,7 +67,7 @@ export default class extends AbstractView {
         productoDataContainer.setAttribute('class', 'card-body');
 
         productoDataContainer.innerHTML = `
-             <div class="mb-3">
+            <div class="mb-3">
                 <p class="card-text">Nombre: <input type='text' id = 'nombre' placeholder= '${producto.nombre_producto}' ></p>
              </div>
 
@@ -94,7 +94,6 @@ export default class extends AbstractView {
         // productoDataContainer.appendChild(selectMultiple);
         productoContainer.appendChild(productoCard);
         productoCard.appendChild(productoDataContainer);
-
 
         return productoContainer;
     }
@@ -266,11 +265,11 @@ export default class extends AbstractView {
         const response = await request.json();
 
         if (!response.ok && response.error.id_error && response.error.id_error == "stockDeposito") {
-           alert(response.error.message);
+            alert(response.error.message);
         } else {
             if (!response.ok) return alert(response.error.message);
         }
-       
+
         alert('Producto Modificado.');
 
         window.location.reload();
@@ -280,11 +279,8 @@ export default class extends AbstractView {
 const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
-        <h1 class= "text-center">Modificar Producto</h1>
-        
+        <h1 class= "text-center">Modificar Producto </h1>
             <form id="formulario-modificar-producto">
-               
-             </form> 
-       
+            </form> 
     </div>
 `;

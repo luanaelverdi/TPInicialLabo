@@ -2,29 +2,29 @@ import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
 export default class extends AbstractView {
-    constructor (params) {
+    constructor(params) {
         super(params);
         this.setTitle('Depositos');
-    } 
+    }
 
-    async init () {
+    async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
         this.pintarDeposito(await this.getDeposito())
     }
 
-    async getDeposito () {
-        const request = await fetch('/api/deposito/'+this.params.id_deposito);
+    async getDeposito() {
+        const request = await fetch('/api/deposito/' + this.params.id_deposito);
         const response = await request.json();
         return response;
     }
 
-    pintarDeposito (deposito) {
+    pintarDeposito(deposito) {
         const contenedor = document.getElementById('contenedor-producto');
         contenedor.appendChild(this.elementoDeposito(deposito));
     }
 
-    elementoDeposito(deposito){
+    elementoDeposito(deposito) {
         const depositoContainer = document.createElement('div');
         depositoContainer.setAttribute('class', 'container');
         depositoContainer.setAttribute('id', 'container-deposito-datos');

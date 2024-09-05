@@ -2,39 +2,39 @@ import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
 export default class extends AbstractView {
-    constructor (params) {
+    constructor(params) {
         super(params);
         this.setTitle('Sumar Stock');
     }
 
-    async init () {
+    async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
         await this.getDeposito();
         this.pintarProducto(await this.getProduct())
     }
 
-    async getProduct () {
-        const request = await fetch('/api/producto/'+this.params.id_producto);
+    async getProduct() {
+        const request = await fetch('/api/producto/' + this.params.id_producto);
         const response = await request.json();
         return response;
     }
 
-    async getDeposito () {
-        const request = await fetch('/api/deposito/'+this.params.id_deposito);
+    async getDeposito() {
+        const request = await fetch('/api/deposito/' + this.params.id_deposito);
         const response = await request.json();
         this.deposito = response;
-       // return response;
+        // return response;
     }
 
-    pintarProducto (producto) {
+    pintarProducto(producto) {
         const contenedor = document.getElementById('contenedor-producto');
-       
+
         const label_nombreDeposito = document.createElement('label');
         label_nombreDeposito.textContent = "Deposito: ";
         label_nombreDeposito.style.fontSize = "25px"
         label_nombreDeposito.innerHTML += `${this.deposito.nombre}`;
-       
+
         contenedor.appendChild(label_nombreDeposito);
 
         const input = document.createElement('input');

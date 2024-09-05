@@ -26,7 +26,7 @@ module.exports = (server) => {
             });
         } catch (err) {
             console.error(err);
-            return res.json({ ok:false, error:{ message: err.message || "Ha ocurrido un error." } });
+            return res.json({ ok: false, error: { message: err.message || "Ha ocurrido un error." } });
         }
     });
 }

@@ -3,7 +3,7 @@ import InicioView from "./views/InicioView.js";
 import ProductoCompraView from "./views/ProductoCompraView.js";
 import ProductoRestarView from "./views/ProductoRestarView.js";
 import ProductoView from "./views/ProductoView.js";
-import ProductosView, {interval} from "./views/ProductosView.js";
+import ProductosView, { interval } from "./views/ProductosView.js";
 import ScannedQRView from "./views/ScannedQRView.js";
 
 import LoginView from "./views/LoginView.js";
@@ -108,18 +108,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     router();
 });
 
-async function getData () {
-    const reqCredenciales = await fetch ("/api/credenciales", { method: "GET" });
+async function getData() {
+    const reqCredenciales = await fetch("/api/credenciales", { method: "GET" });
     const resCredenciales = await reqCredenciales.json();
 
     const reqServer = await fetch("/api/server", { method: "GET" });
     const resServer = await reqServer.json();
 
-    window.app = { 
+    window.app = {
         host: resServer.host,
-        user: { 
-            credenciales: resCredenciales.credenciales 
-        } 
+        user: {
+            credenciales: resCredenciales.credenciales
+        }
     }
 
     console.log(window.app)

@@ -1,4 +1,4 @@
-import { navigateTo } from "../router.js";
+/*import { navigateTo } from "../router.js";*/
 import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
@@ -19,7 +19,7 @@ export default class extends AbstractView {
         const input_cat = document.getElementById("input_cat");
         const btn_agregar = document.getElementById("btn_agregar");
 
-        btn_agregar.addEventListener('click',async (e) => {
+        btn_agregar.addEventListener('click', async (e) => {
             const cat_nombre = input_cat.value;
 
             const request = await fetch('/api/categoria/agregar', {

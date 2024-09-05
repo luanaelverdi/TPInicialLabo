@@ -15,5 +15,8 @@
     "mariadb": "^3.3.1",
     "postgres": "^3.4.4",
     "tpiniciallabo": "file:"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

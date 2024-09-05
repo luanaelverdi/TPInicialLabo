@@ -1,24 +1,24 @@
 import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
-    constructor (params) {
+    constructor(params) {
         super(params);
         this.setTitle('Inicio');
     }
 
-    async init () {
+    async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
         this.sendQR();
     }
 
-    async sendQR () {
-        const request = await fetch(`/api/qr/${this.params.id_usuario}/${this.params.id_producto}`, {method: "GET"});
+    async sendQR() {
+        const request = await fetch(`/api/qr/${this.params.id_usuario}/${this.params.id_producto}`, { method: "GET" });
         const response = await request.json();
         const title = document.getElementById('message');
         if (response.ok) {
             title.innerText = 'Ya puedes cerrar esta ventana.';
-        } else {    
+        } else {
             title.innerText = 'Ha ocurrido un error.';
         }
     }
