@@ -96,6 +96,7 @@ export default class extends AbstractView {
         const inputDesc = document.getElementById('descripcion');
         const inputStockMin = document.getElementById('stockMinimo');
         const inputIdCat = document.getElementById('id_select');
+        const inputStockActual = document.getElementById('stockActual');
 
         const checksMarcados = this.checkboxes.filter(check => check.checked)
         if (checksMarcados.length <= 0) {
@@ -108,10 +109,10 @@ export default class extends AbstractView {
         const des = inputDesc.value;
         const smin = inputStockMin.value;
         const idcat = inputIdCat.value;
+        const sactual = inputStockActual.value;
 
         //limpiar formulario
         const formulario = document.getElementById("formulario-insertar-producto");
-        formulario.reset();
 
         const request = await fetch('/api/producto/add', {
             method: "POST",
@@ -123,13 +124,15 @@ export default class extends AbstractView {
                     descripcion: des,
                     stock_minimo: smin,
                     id_categoria: idcat,
-                    depositos: idDeps
+                    depositos: idDeps,
+                    stockActual: sactual
                 }
             })
         });
         const response = await request.json();
         if (!response.ok) return alert(response.error.message);
         alert('Producto Insertado.');
+        formulario.reset();
     }
 }
 
@@ -153,6 +156,11 @@ const VIEW_CONTENT = `
                     <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción</label>
                         <textarea class="form-control" id="descripcion" rows="3" placeholder="Ingrese la descripción" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="stockActual" class="form-label">Stock Actual</label>
+                        <input type="number" class="form-control" id="stockActual" placeholder="Ingrese el stock actual" min="1" required>
                     </div>
                     
                     <div class="mb-3">

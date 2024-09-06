@@ -11,6 +11,8 @@ module.exports = (server) => {
             if (producto.stock_minimo < 0) return res.json({ ok: false, error: { message: "Debes ingresar un stock minimo valido." } });
             if (producto.id_categoria < 0) return res.json({ ok: false, error: { message: "Debes ingresar una categoria valida." } });
             if (producto.depositos.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar un deposito." } });
+            if (producto.stockActual <= 0) return res.json({ ok: false, error: { message: "El stock actual debe ser mayor a 0." } });
+            if (producto.stockActual < producto.stock_minimo) return res.json({ ok: false, error: { message: "El stock actual no puede ser menor que el stock minimo." } });
 
             await Postgres.query().begin(async sql => {
                 await sql`SET TRANSACTION ISOLATION LEVEL READ COMMITTED;`;
@@ -35,10 +37,11 @@ module.exports = (server) => {
                 for (const id of producto.depositos) {
                     await sql`
                         INSERT INTO 
-                            almacenamiento (id_producto, id_deposito) 
+                            almacenamiento (id_producto, id_deposito,stock) 
                         VALUES (
                             ${qProducto[0].max},
-                            ${id}
+                            ${id},
+                            ${producto.stockActual}
                         );
                     `;
                 }       

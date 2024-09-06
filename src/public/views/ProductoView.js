@@ -68,15 +68,16 @@ export default class extends AbstractView {
 
         productoDataContainer.innerHTML = `
             <div class="mb-3">
-                <p class="card-text">Nombre: <input type='text' id = 'nombre' placeholder= '${producto.nombre_producto}' ></p>
+                <label class="card-text">Nombre: <input type='text' id = 'nombre' placeholder= '${producto.nombre_producto}' ></label>
              </div>
 
             <div class="mb-3">
                 <p class="card-text">Codigo: <input type='text' id = 'codigo' placeholder= '${producto.codigo}' ></p>  
             </div>
 
-            <div class="mb-3">
-               <p class="card-text">Descripcion: <input type='text' id = 'descripcion' placeholder= '${producto.desc_producto} '</p>
+            <div class="mb-3" style = "display: flex;flex-direction: column;gap: 5px;">
+               <label class="card-text">Descripción: </label>
+                <textarea id = 'descripcion' placeholder= '${producto.desc_producto}' class="card-text" style="resize: none;"></textarea>
             </div>
 
             <div class="mb-3">
