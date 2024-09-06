@@ -13,8 +13,8 @@ module.exports = (server) => {
                 const qExisteUsuario = await sql`
                     SELECT * FROM usuario WHERE nombre_usuario = ${nombre};    
                 `;
-                if (!qExisteUsuario[0]) throw new Error("No existe tal usuario.");
-                if (password != qExisteUsuario[0].contraseña) throw new Error("La contraseña es incorrecta.");
+                if (!qExisteUsuario[0]) throw new Error("La contraseña/usuario es incorrecto.");
+                if (password != qExisteUsuario[0].contraseña) throw new Error("La contraseña/usuario es incorrecto.");
                 return res.json({
                     ok: true,
                     usuario: {

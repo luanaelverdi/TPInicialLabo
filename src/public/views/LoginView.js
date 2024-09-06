@@ -11,6 +11,10 @@ export default class extends AbstractView {
     async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
+        const menues = [...document.getElementsByClassName("menu")]
+        menues.forEach( menu =>  {
+            menu.style.display = "none";
+        })
         this.eventos();
     }
 
@@ -78,7 +82,8 @@ export default class extends AbstractView {
         });
         const response = await request.json();
         if (!response.ok) return alert(response.error.message);
-        return alert('Te has registrado con exito. Ahora puedes iniciar sesion.');
+        alert('Te has registrado con exito. Ahora puedes iniciar sesion.');
+        window.location.reload();
     }
 }
 
