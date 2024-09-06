@@ -6,12 +6,7 @@
 - Morienega Melina: melimorienega@gmail.com
 
 ### Información Importante
- - El proyecto se encuentra en la nube: https://tpiniciallabo-f8dq.onrender.com/
- - Para probar local: 
-    - NodeJS v20.17.0 o superior ('npm i' para instalar las dependencias y 'npm run start' para iniciar el servidor)
-    - Crear un archivo .env en la ruta base del proyecto con la variable de entorno SERVER_HOST='tu_ip_ipv4':4000 (sin las comillas)
-    - Tanto la computadora como el dispositivo el cual escanean deben pertenecer a la misma red.
-    - Si al intentar leer un codigoQR no se actualiza la pagina correspondiente, verifique si su antivirus confia en la red que los dispositivos estan conectados (adjuntamos imagen con antivirus AVAST) 
+ - El proyecto se encuentra en la nube: https://tpiniciallabo-f8dq.onrender.com/ 
 
 ### Imagen Antivirus
 
