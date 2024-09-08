@@ -4,7 +4,9 @@ module.exports = (server) => {
     server.app.post('/api/producto/add', async (req, res) => {        
         try {
             const producto = req.body.producto;
-    
+            const sactual = producto.stockActual;
+            const smin = producto.stock_minimo;
+
             if (producto.codigo.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar un codigo." } });
             if (producto.nombre.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar un nombre." } });
             if (producto.descripcion.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar una descripcion." } });
@@ -12,7 +14,7 @@ module.exports = (server) => {
             if (producto.id_categoria < 0) return res.json({ ok: false, error: { message: "Debes ingresar una categoria valida." } });
             if (producto.depositos.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar un deposito." } });
             if (producto.stockActual <= 0) return res.json({ ok: false, error: { message: "El stock actual debe ser mayor a 0." } });
-            if (producto.stockActual < producto.stock_minimo) return res.json({ ok: false, error: { message: "El stock actual no puede ser menor que el stock minimo." } });
+            if (sactual <= smin) return res.json({ ok: false, error: { message: "El stock actual no puede ser menor que el stock minimo." } });
 
             await Postgres.query().begin(async sql => {
                 await sql`SET TRANSACTION ISOLATION LEVEL READ COMMITTED;`;

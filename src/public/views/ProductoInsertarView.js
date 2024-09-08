@@ -111,6 +111,7 @@ export default class extends AbstractView {
         const idcat = inputIdCat.value;
         const sactual = inputStockActual.value;
 
+
         //limpiar formulario
         const formulario = document.getElementById("formulario-insertar-producto");
 
@@ -169,12 +170,12 @@ const VIEW_CONTENT = `
                     </div>
                     
                     <div class="mb-3">
-                        <label for="idCategoria" class="form-label">Categoría</label>
+                        <label for="id_select" class="form-label">Categoría</label>
                         <select id = "id_select">  </select>
                     </div>
 
                     <div class="mb-3" id = "depositos_checks">
-                        <label for="idCategoria" class="form-label">Depositos</label>
+                        <label for="idDeposito" class="form-label">Depositos</label>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Crear Producto</button>

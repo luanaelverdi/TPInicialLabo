@@ -24,6 +24,17 @@ export default class extends AbstractView {
     async pintarProducto(producto) {
         const contenedor = document.getElementById('contenedor-producto');
 
+        const nombreProducto = document.createElement('h3');
+        nombreProducto.innerHTML = "[" + producto.codigo + "] " + producto.nombre_producto;
+        
+        contenedor.appendChild(nombreProducto);
+
+        const stockMinimoProducto = document.createElement('h5');
+        stockMinimoProducto.innerHTML = "Stock Minimo: " + producto.stock_minimo;
+
+        contenedor.appendChild(stockMinimoProducto);
+        contenedor.innerHTML += '<br>'; 
+
         //select de depositos
         await this.agregarSelectDeposito(contenedor);
 
@@ -128,7 +139,7 @@ export default class extends AbstractView {
 const VIEW_CONTENT = `
     <div class="container-view">
     ${TEMPLATE_NAVIGATION}
-        <h1 class ="text-start">RESTAR STOCK</h1>
+        <h1 class ="text-start">RESTAR STOCK </h1>
         <div class = " form-control" id="contenedor-producto">
         </div>
     </div>

@@ -26,9 +26,14 @@ export default class extends AbstractView {
         this.deposito = response;
         // return response;
     }
-
+    
     pintarProducto(producto) {
         const contenedor = document.getElementById('contenedor-producto');
+
+        const nombreProducto = document.createElement('h3');
+        nombreProducto.innerHTML = "[" + producto.codigo + "] " + producto.nombre_producto;
+        
+        contenedor.appendChild(nombreProducto);
 
         const label_nombreDeposito = document.createElement('label');
         label_nombreDeposito.textContent = "Deposito: ";
