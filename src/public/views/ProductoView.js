@@ -95,7 +95,7 @@ export default class extends AbstractView {
         // productoDataContainer.appendChild(selectMultiple);
         productoContainer.appendChild(productoCard);
         productoCard.appendChild(productoDataContainer);
-
+    
         return productoContainer;
     }
 

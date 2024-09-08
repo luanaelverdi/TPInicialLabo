@@ -2,10 +2,12 @@
 const login = require('../src/public/views/LoginView');
 const request = require('supertest');
 
-describe('GET /tasks', () => {
+//esta buscando esa ruta y no la tiene que encontrar
+describe('POST /api/usuario/login', () => {
 
     test('should response with a 200 status code', async () => {
-        const response = await request(login).get('/tasks').send()
+        const response = await request(login).post('/api/usuario/login').send()
         console.log(response)
+        //expect(response.statusCode).toBe(200);
     })
 })
