@@ -10,26 +10,26 @@
 
 ### Imagen Antivirus
 
-![Ejemplo](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/Antivirus.PNG)
+![Ejemplo](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/Antivirus.PNG)
 
 ### WBS
 
-![WBS](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/diagrama_wbs.png)
+![WBS](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/diagrama_wbs.png)
 ### Diagrama Conceptual
 
-![Conceptual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/diagrama_conceptual.png)
+![Conceptual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/diagrama_conceptual.png)
 
 ### Diagrama Entidad-Relacion
 
-![DER](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable/assets/diagrama_der.png)
+![DER](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/diagrama_der.png)
 
 ### Modelo Relacional
 
-![Modelo Relacional](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/modelo_relacional.png)
+![Modelo Relacional](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/modelo_relacional.png)
 
 ### Diagrama de Arquitectura
 
-![Architecture Diagram](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/DiagramadeArquitectura.png)
+![Architecture Diagram](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/DiagramadeArquitectura.png)
 
 
 #### Componentes:
@@ -40,9 +40,9 @@
  - Visualizador de Códigos QR: Módulo encargado de la visualización de los códigos QR.
 
  #### Calendario:
- ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario1.JPG)
- ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario2.JPG)
-  ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario3.JPG)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/calendario1.JPG)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/calendario2.JPG)
+  ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/calendario3.JPG)
  
  ### Grafico cards
-![Grafico cards](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/graficocards.JPG)
+![Grafico cards](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable3/assets/graficocards.JPG)
