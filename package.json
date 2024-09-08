@@ -4,7 +4,8 @@
   "description": "![Architecture Diagram](https://github.com/luanaelverdi/TPInicialLabo/blob/main/assets/diagrama_arquitectura.png)\r Componentes:\r  - UI Manager: Interfaz donde el usuario interactúa con el sistema.\r  - Administrador de Artículos: Módulo encargado de la ALTA, BAJA, MODIFICACIÓN y LECTURA de los artículos.\r  - Visualizador de Códigos QR: Módulo encargado de la visualización de los códigos QR.",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server/index.js"
+    "start": "node src/server/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "tpiniciallabo": "file:"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
