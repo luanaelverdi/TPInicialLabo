@@ -40,8 +40,9 @@
  - Visualizador de Códigos QR: Módulo encargado de la visualización de los códigos QR.
 
  #### Calendario:
- ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario1.jpeg)
- ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario2.jpeg)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario1.JPG)
+ ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario2.JPG)
+  ![Calendario actual](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/calendario3.JPG)
  
  ### Grafico cards
-![Grafico cards](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/grafico%20cards.jpeg)
+![Grafico cards](https://github.com/luanaelverdi/TPInicialLabo/blob/entregable2/assets/graficocards.JPG)
