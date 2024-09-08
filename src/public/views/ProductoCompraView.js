@@ -24,15 +24,14 @@ export default class extends AbstractView {
         const request = await fetch('/api/deposito/' + this.params.id_deposito);
         const response = await request.json();
         this.deposito = response;
-        // return response;
     }
-    
+
     pintarProducto(producto) {
         const contenedor = document.getElementById('contenedor-producto');
 
         const nombreProducto = document.createElement('h3');
         nombreProducto.innerHTML = "[" + producto.codigo + "] " + producto.nombre_producto;
-        
+
         contenedor.appendChild(nombreProducto);
 
         const label_nombreDeposito = document.createElement('label');

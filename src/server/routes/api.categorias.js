@@ -1,5 +1,4 @@
-const DBConnector = require('../dbconnector.js');
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
     server.app.get('/api/categorias', async (_, res) => {

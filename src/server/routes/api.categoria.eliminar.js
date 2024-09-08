@@ -1,4 +1,4 @@
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
     server.app.delete('/api/categoria/:id_categoria/eliminar', async (req, res) => {
@@ -20,7 +20,7 @@ module.exports = (server) => {
                     WHERE
                         id_categoria = ${id_categoria};
                 `;
-                
+
                 return res.json({ ok: true });
             });;
         } catch (error) {

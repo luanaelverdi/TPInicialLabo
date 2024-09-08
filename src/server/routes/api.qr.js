@@ -8,7 +8,7 @@ module.exports = (server) => {
             server.users = server.users.filter(c => parseInt(c.id) != parseInt(credenciales.id));
             const newCredentials = { id: credenciales.id, qr: { id_producto } };
             server.users.push(newCredentials);
-            return res.json({ ok: true });    
+            return res.json({ ok: true });
         } catch (error) {
             console.error(error);
             return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });

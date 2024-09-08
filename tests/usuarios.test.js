@@ -1,10 +1,10 @@
 const request = require('supertest');
 const express = require('express');
 
-const loginRoute = require('../src/server/routes/api.usuario.login'); 
+const loginRoute = require('../src/server/routes/api.usuario.login');
 const app = express();
 
-app.use(express.json()); 
+app.use(express.json());
 loginRoute({ app });
 
 describe('POST /api/usuario/login', () => {
@@ -14,7 +14,7 @@ describe('POST /api/usuario/login', () => {
       .post('/api/usuario/login')
       .send({ password: '1234' });
 
-    expect(response.statusCode).toBe(200); // O el código de estado correcto
+    expect(response.statusCode).toBe(200); 
     expect(response.body.ok).toBe(false);
     expect(response.body.error.message).toBe('Debes ingresar un nombre.');
   });
@@ -31,8 +31,8 @@ describe('POST /api/usuario/login', () => {
 });
 
 /////registro
-const registroRoute = require('../src/server/routes/api.usuario.registro'); 
-registroRoute({ app }); // Pasa la instancia del servidor a la ruta
+const registroRoute = require('../src/server/routes/api.usuario.registro');
+registroRoute({ app }); 
 
 describe('POST /api/usuario/registro', () => {
   it('debería devolver un error si el nombre está vacío', async () => {

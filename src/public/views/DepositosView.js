@@ -22,7 +22,6 @@ export default class extends AbstractView {
     async pintarDepositos(depositos) {
         const container = document.getElementById('contenedor-depositos');
         for (const deposito of depositos) {
-            //buscar sus productos
             const productos = await this.getDepositoProductos(deposito.id_deposito);
             container.appendChild(this.elementoDeposito(deposito, productos));
         }

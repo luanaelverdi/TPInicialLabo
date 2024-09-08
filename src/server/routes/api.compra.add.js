@@ -1,7 +1,7 @@
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
-    server.app.put('/api/compra/add/:id_producto/:id_deposito/:cantidad', async (req, res) => {        
+    server.app.put('/api/compra/add/:id_producto/:id_deposito/:cantidad', async (req, res) => {
         try {
             const id_producto = req.params.id_producto;
             const cantidad = req.params.cantidad;

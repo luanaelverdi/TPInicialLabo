@@ -72,8 +72,8 @@ describe('POST /api/producto/add', () => {
 });
 
 ///////modificar
-const productoModificarRoute = require('../src/server/routes/api.producto.modificar'); 
-productoModificarRoute({ app }); 
+const productoModificarRoute = require('../src/server/routes/api.producto.modificar');
+productoModificarRoute({ app });
 
 describe('POST /api/producto/modificar', () => {
 

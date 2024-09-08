@@ -1,5 +1,4 @@
-const db = require('../dbconnector.js');
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 module.exports = (server) => {
     server.app.post('/api/usuario/login', async (req, res) => {
         try {
@@ -7,7 +6,7 @@ module.exports = (server) => {
             const password = req.body.password;
             if (!nombre || nombre.length <= 0) throw new Error("Debes ingresar un nombre.");
             if (!password || password.length <= 0) throw new Error("Debes ingresar una contraseña.");
-            
+
             await Postgres.query().begin(async sql => {
                 await sql`SET TRANSACTION ISOLATION LEVEL READ COMMITTED;`;
                 const qExisteUsuario = await sql`

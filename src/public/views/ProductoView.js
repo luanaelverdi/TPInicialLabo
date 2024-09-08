@@ -10,7 +10,6 @@ export default class extends AbstractView {
     async init() {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
-        //this.pintarProducto(JSON.stringify(await this.getProduct()));
         this.pintarProducto(await this.getProduct())
         this.asignarDatos(await this.getProduct())
         this.eventos()
@@ -43,7 +42,6 @@ export default class extends AbstractView {
         botonGuardar.setAttribute('class', 'btn btn-primary');
         botonGuardar.setAttribute('id', 'boton-guardar-modificar');
         botonGuardar.textContent = 'Guardar';
-        //  botonGuardar.style.alignContent = 'center';
         botonGuardar.style.position = 'absolute';
         botonGuardar.style.bottom = '85px';
         botonGuardar.style.left = '70%';
@@ -91,16 +89,13 @@ export default class extends AbstractView {
         this.pintarCategorias(productoDataContainer);
         this.pintarDepositos(productoDataContainer);
 
-        // Agregar el select al formulario
-        // productoDataContainer.appendChild(selectMultiple);
         productoContainer.appendChild(productoCard);
         productoCard.appendChild(productoDataContainer);
-    
+
         return productoContainer;
     }
 
     async pintarCategorias(productoDataContainer) {
-        //llamado a la api para que me traiga las categorias (id_categoria, nombre)
         const request = await fetch('/api/categorias', {
             method: "GET",
         });
@@ -116,24 +111,21 @@ export default class extends AbstractView {
         var optionElement = document.createElement('option');
 
         optionElement.value = 0;
-        optionElement.textContent = "Seleccione"; // Texto mostrado
+        optionElement.textContent = "Seleccione";
         select.appendChild(optionElement);
 
-        // Añadir las opciones al select
         opcionesCat.forEach(function (opcion) {
             var optionElement = document.createElement('option');
 
             optionElement.value = opcion.id_categoria;
-            optionElement.textContent = opcion.nombre; // Texto mostrado
+            optionElement.textContent = opcion.nombre;
             select.appendChild(optionElement);
         });
 
         productoDataContainer.appendChild(label_cat);
         productoDataContainer.appendChild(select);
 
-        //seleccionar el que corresponde de producto
         select.value = this.producto.id_categoria;
-
     }
 
     async pintarDepositos(productoDataContainer) {
@@ -156,16 +148,13 @@ export default class extends AbstractView {
         productoDataContainer.appendChild(div_dep);
 
         opciones.forEach((opcion) => {
-            // Crear un contenedor para cada opción
             var div = document.createElement('div');
 
-            // Crear el elemento checkbox
             var checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.name = 'opciones'; // Todos los checkboxes con el mismo nombre para agruparlos
-            checkbox.value = opcion.id_deposito;  // Valor de cada opción
+            checkbox.value = opcion.id_deposito;
 
-            // Crear una etiqueta para el checkbox
             var label = document.createElement('label');
             label.textContent = opcion.nombre;
             label.style.marginLeft = "10px"
@@ -174,7 +163,6 @@ export default class extends AbstractView {
             div.appendChild(checkbox);
             div.appendChild(label);
 
-            // Añadir el contenedor al formulario
             productoDataContainer.appendChild(div);
         });
 
@@ -247,7 +235,6 @@ export default class extends AbstractView {
         }
         const idDeps = checksMarcados.map(check => check.value);
 
-
         const request = await fetch('/api/producto/modificar', {
             method: "POST",
             headers: { "Content-Type": "Application/JSON" },
@@ -272,7 +259,6 @@ export default class extends AbstractView {
         }
 
         alert('Producto Modificado.');
-
         window.location.reload();
     }
 }

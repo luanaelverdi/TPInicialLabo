@@ -121,6 +121,5 @@ async function getData() {
             credenciales: resCredenciales.credenciales
         }
     }
-
     console.log(window.app)
 }

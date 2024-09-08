@@ -1,4 +1,4 @@
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
     server.app.delete('/api/producto/:id_producto/deposito/:id_deposito/restar/:cantidad', async (req, res) => {
@@ -33,7 +33,7 @@ module.exports = (server) => {
                 `;
 
                 return res.json({ ok: true });
-            }); 
+            });
         } catch (error) {
             console.error(error);
             return res.json({ ok: false, error: { message: "Ha ocurrido un error." } });

@@ -1,4 +1,4 @@
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
     server.app.post('/api/categoria/agregar', async (req, res) => {
@@ -14,7 +14,6 @@ module.exports = (server) => {
                         ${categoria.nombre}
                     );
                 `;
-
                 return res.json({ ok: true });
             });
         } catch (error) {

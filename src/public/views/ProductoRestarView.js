@@ -26,14 +26,14 @@ export default class extends AbstractView {
 
         const nombreProducto = document.createElement('h3');
         nombreProducto.innerHTML = "[" + producto.codigo + "] " + producto.nombre_producto;
-        
+
         contenedor.appendChild(nombreProducto);
 
         const stockMinimoProducto = document.createElement('h5');
         stockMinimoProducto.innerHTML = "Stock Minimo: " + producto.stock_minimo;
 
         contenedor.appendChild(stockMinimoProducto);
-        contenedor.innerHTML += '<br>'; 
+        contenedor.innerHTML += '<br>';
 
         //select de depositos
         await this.agregarSelectDeposito(contenedor);
@@ -52,7 +52,6 @@ export default class extends AbstractView {
         pStock.type = 'text';
         pStock.setAttribute('class', 'form-label');
         pStock.innerHTML = 'Stock a restar: '
-
 
         const inputStockActual = document.createElement('input');
         this.inputStockActual = inputStockActual;
@@ -83,13 +82,11 @@ export default class extends AbstractView {
             alert('Cantidad restada');
             window.location.reload();
         });
-
         contenedor.appendChild(pStockActual);
         contenedor.appendChild(inputStockActual);
         contenedor.appendChild(pStock);
         contenedor.appendChild(inputStock);
         contenedor.appendChild(button);
-
     }
 
     async agregarSelectDeposito(contenedor) {
@@ -97,8 +94,8 @@ export default class extends AbstractView {
             method: "GET",
         });
         const opcionesDep = await request.json();
-
         const label_deposito = document.createElement('label');
+
         label_deposito.setAttribute("class", "form-label")
         label_deposito.textContent = "Depositos: ";
         label_deposito.style.marginRight = "10px"
@@ -110,15 +107,14 @@ export default class extends AbstractView {
         var optionElement = document.createElement('option');
 
         optionElement.value = 0;
-        optionElement.textContent = "Seleccione"; // Texto mostrado
+        optionElement.textContent = "Seleccione";
         select.appendChild(optionElement);
 
-        // Añadir las opciones al select
         opcionesDep.forEach((opcion) => {
             var optionElement = document.createElement('option');
 
             optionElement.value = opcion.id_deposito;
-            optionElement.textContent = opcion.nombre; // Texto mostrado
+            optionElement.textContent = opcion.nombre;
 
             select.appendChild(optionElement);
         });
@@ -127,13 +123,10 @@ export default class extends AbstractView {
         contenedor.innerHTML += "<br>";
 
         document.querySelector('#select_deposito').addEventListener('change', (e) => {
-            // Aquí puedes acceder al valor seleccionado
             if (e.target.value == 0) return;
             this.inputStockActual.value = opcionesDep.find(dep => dep.id_deposito == e.target.value).stock;
         });
-
     }
-
 }
 
 const VIEW_CONTENT = `

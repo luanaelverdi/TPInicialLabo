@@ -28,7 +28,7 @@ export default class extends AbstractView {
         var optionElement = document.createElement('option');
 
         optionElement.value = 0;
-        optionElement.textContent = "Seleccione"; // Texto mostrado
+        optionElement.textContent = "Seleccione";
         select.appendChild(optionElement);
 
         // Añadir las opciones al select
@@ -36,7 +36,7 @@ export default class extends AbstractView {
             var optionElement = document.createElement('option');
 
             optionElement.value = opcion.id_categoria;
-            optionElement.textContent = opcion.nombre; // Texto mostrado
+            optionElement.textContent = opcion.nombre;
             select.appendChild(optionElement);
         });
     }
@@ -55,25 +55,20 @@ export default class extends AbstractView {
         this.checkboxes = [];
 
         opciones.forEach((opcion) => {
-            // Crear un contenedor para cada opción
             var div = document.createElement('div');
 
-            // Crear el elemento checkbox
             var checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.name = 'opciones'; // Todos los checkboxes con el mismo nombre para agruparlos
-            checkbox.value = opcion.id_deposito;  // Valor de cada opción
+            checkbox.value = opcion.id_deposito;
 
-            // Crear una etiqueta para el checkbox
             var label = document.createElement('label');
             label.textContent = opcion.nombre;
 
-            // Añadir el checkbox y la etiqueta al contenedor
             this.checkboxes.push(checkbox);
             div.appendChild(checkbox);
             div.appendChild(label);
 
-            // Añadir el contenedor al formulario
             divPrinc.appendChild(div);
         });
     }
@@ -111,8 +106,6 @@ export default class extends AbstractView {
         const idcat = inputIdCat.value;
         const sactual = inputStockActual.value;
 
-
-        //limpiar formulario
         const formulario = document.getElementById("formulario-insertar-producto");
 
         const request = await fetch('/api/producto/add', {
@@ -133,6 +126,8 @@ export default class extends AbstractView {
         const response = await request.json();
         if (!response.ok) return alert(response.error.message);
         alert('Producto Insertado.');
+
+        //limpiar formulario
         formulario.reset();
     }
 }

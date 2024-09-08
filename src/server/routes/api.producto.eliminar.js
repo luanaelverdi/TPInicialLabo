@@ -1,4 +1,4 @@
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
     server.app.delete('/api/producto/:id_producto/eliminar', async (req, res) => {

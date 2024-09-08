@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const fs = require("fs");
-const Postgres=require('./Postgres');
+const Postgres = require('./Postgres');
 
 module.exports = class Server {
     constructor() {

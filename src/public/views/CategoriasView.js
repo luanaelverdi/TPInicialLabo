@@ -1,4 +1,3 @@
-/*import { navigateTo } from "../router.js";*/
 import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 

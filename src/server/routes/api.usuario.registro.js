@@ -1,5 +1,4 @@
-const db = require('../dbconnector.js');
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
     server.app.post('/api/usuario/registro', async (req, res) => {

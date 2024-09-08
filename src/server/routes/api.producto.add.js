@@ -1,7 +1,7 @@
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
-    server.app.post('/api/producto/add', async (req, res) => {        
+    server.app.post('/api/producto/add', async (req, res) => {
         try {
             const producto = req.body.producto;
             const sactual = producto.stockActual;
@@ -46,7 +46,7 @@ module.exports = (server) => {
                             ${producto.stockActual}
                         );
                     `;
-                }       
+                }
             });
 
             return res.json({ ok: true });

@@ -1,4 +1,4 @@
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
     server.app.get('/api/depositos/:id_deposito/productos', async (req, res) => {

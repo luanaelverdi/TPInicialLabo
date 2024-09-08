@@ -1,7 +1,7 @@
-const Postgres=require('../Postgres.js');
+const Postgres = require('../Postgres.js');
 
 module.exports = (server) => {
-    server.app.post('/api/producto/modificar', async (req, res) => {        
+    server.app.post('/api/producto/modificar', async (req, res) => {
         try {
             const producto = req.body.producto;
             if (producto.codigo.length <= 0) return res.json({ ok: false, error: { message: "Debes ingresar un codigo." } });
@@ -35,8 +35,8 @@ module.exports = (server) => {
                         WHERE
                             id_producto = ${producto.id_producto} and id_deposito = ${id};
                     `;
-                   
-                   if (qStockDeposito[0] && qStockDeposito[0].stock > 0) return res.json({ ok: false, error: { message: "El producto en deposito seleccionados tiene stock. No se puede modificar Depositos.", id_error: "stockDeposito"}});
+
+                    if (qStockDeposito[0] && qStockDeposito[0].stock > 0) return res.json({ ok: false, error: { message: "El producto en deposito seleccionados tiene stock. No se puede modificar Depositos.", id_error: "stockDeposito" } });
                 }
 
                 await sql`

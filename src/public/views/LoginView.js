@@ -12,7 +12,7 @@ export default class login extends AbstractView {
         const appContainer = document.getElementById('app');
         appContainer.innerHTML = VIEW_CONTENT;
         const menues = [...document.getElementsByClassName("menu")]
-        menues.forEach( menu =>  {
+        menues.forEach(menu => {
             menu.style.display = "none";
         })
         this.eventos();
