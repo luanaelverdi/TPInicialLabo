@@ -2,7 +2,7 @@ import { navigateTo } from "../router.js";
 import AbstractView from "./AbstractView.js";
 import { TEMPLATE_NAVIGATION } from "./templates/nav.js";
 
-export default class extends AbstractView {
+export default class login extends AbstractView {
     constructor(params) {
         super(params);
         this.setTitle('Login');
