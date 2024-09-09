@@ -7,6 +7,11 @@
 
 ### Información Importante
  - El proyecto se encuentra en la nube: https://tpiniciallabo-f8dq.onrender.com/ 
+ - Para probar localmente:
+    . Crear un archivo .env en la ruta base del proyecto con las variables de entorno SERVER_HOST='tu_ip_ipv4':4000 (sin las comillas), POSTGRES_URL=dione-database-dione-database.g.aivencloud.com, POSTGRES_PORT=20971, POSTGRES_DB_NAME=laboratorio, POSTGRES_USERNAME=avnadmin, POSTGRES_PASSWORD=AVNS_uuX8W1GMNqqftUz7QtQ
+    . Tanto la computadora como el dispositivo el cual escanean deben pertenecer a la misma red.
+    . Si al intentar leer un código QR no se actualiza la página correspondiente, verifique si su antivirus confía en la red que los dispositivos están conectados (adjuntamos imagen con antivirus AVAST)
+    . NodeJS v20.17.0 o superior ('npm i' para instalar las dependencias y 'npm run start' para iniciar el servidor)
 
 ### Imagen Antivirus
 
